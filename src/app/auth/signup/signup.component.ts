@@ -1,8 +1,12 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { SignupResponse, AuthData } from './../auth.interface';
 import { EmailValidator } from './email.validator';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './../auth.service';
+import { SignupData } from './signup.interface';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -25,6 +29,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private emailValidator: EmailValidator,
+    private router: Router,
+    private snackBarService: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -72,8 +78,40 @@ export class SignupComponent implements OnInit {
     }
     this.signupLoading = true;
     this.disableControl = true;
-    this.disableControl = true;
-    this.signupLoading = true;
+
+    let signupData: SignupData = {
+      email: this.signupForm.value.email,
+      name: this.signupForm.value.name,
+      password: this.signupForm.value.password,
+      contact_no: this.signupForm.value.contact_no,
+      role: 'Customer',
+    };
+
+    let signupResponse: SignupResponse;
+    try {
+      signupResponse = await this.authService.signup(signupData);
+    } catch (error) {
+      console.log(error);
+      this.router.navigate(['/']);
+    }
+    if (signupResponse.valid) {
+      let authData: AuthData = {
+        ...signupResponse.data,
+      };
+      await this.authService.authUser(authData);
+      if(!authData.emailVerified){
+        // Open Dialog to ask for verification of email
+      }
+      this.snackBarService.open(signupResponse.message, 'Ok', {
+        duration: 5 * 1000,
+      });
+    }
+    else{
+      // Open Dialog to show dialog data
+    }
+
+    this.disableControl = false;
+    this.signupLoading = false;
   }
 
   passwordErrorChecker(data: any): void {
