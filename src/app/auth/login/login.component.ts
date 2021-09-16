@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl(
         { value: '', disabled: this.disableControl },
         {
-          validators: [Validators.required, Validators.minLength(8)],
+          validators: [Validators.required],
         },
       ),
     });

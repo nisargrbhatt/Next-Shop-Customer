@@ -38,6 +38,8 @@ export class AuthService {
   }
   checkEmail(email: string): Observable<{ ok: boolean }> {
     email = email.replace(' ', '').replace('[$!%*?&/]', '');
-    return this.httpService.get<{ ok: boolean }>(BACKEND_URL + '' + email);
+    return this.httpService.get<{ ok: boolean }>(
+      BACKEND_URL + '/user/emailCheck?email=' + email,
+    );
   }
 }

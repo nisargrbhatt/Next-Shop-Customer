@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { EmailValidator } from './signup/email.validator';
 import { AngularMaterialModule } from './../angular-material.module';
 import { AuthService } from './auth.service';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -17,7 +18,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
   ],
   declarations: [SignupComponent, LoginComponent],
-  providers: [AuthService],
+  providers: [AuthService, EmailValidator],
   exports: [],
 })
 export class AuthModule {}
