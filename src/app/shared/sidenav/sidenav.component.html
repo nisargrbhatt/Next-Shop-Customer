@@ -7,7 +7,8 @@
       (click)="closeNav()"
       *ngIf="conditionCheck(item.condition, item.onAuthenticate)"
       ><mat-icon *ngIf="item.isMatIcon">{{ item.icon }}</mat-icon>
-      {{ item.name }}</a
-    >
+      <img src="{{ item.icon }}" *ngIf="!item.isMatIcon" />
+      {{ item.name }}
+    </a>
   </span>
 </div>

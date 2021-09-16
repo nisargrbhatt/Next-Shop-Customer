@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -93,6 +94,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     ScrollingModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class AngularMaterialModule {}

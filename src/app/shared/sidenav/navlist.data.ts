@@ -8,7 +8,7 @@ export interface NavListItem {
 }
 export const NavList: NavListItem[] = [
   {
-    routerLink: '/auth/login',
+    routerLink: 'auth/login',
     name: 'Login',
     icon: 'login',
     isMatIcon: true,
@@ -16,7 +16,7 @@ export const NavList: NavListItem[] = [
     onAuthenticate: false,
   },
   {
-    routerLink: '/auth/signup',
+    routerLink: 'auth/signup',
     name: 'Signup',
     icon: 'create',
     isMatIcon: true,
