@@ -56,7 +56,9 @@ export class SignupComponent implements OnInit {
             Validators.required,
             Validators.minLength(10),
             Validators.maxLength(10),
-            Validators.pattern('(?=.*[0-9])'),
+            Validators.pattern(
+              '^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$',
+            ),
           ],
         },
       ),
@@ -96,9 +98,14 @@ export class SignupComponent implements OnInit {
     let signupResponse: SignupResponse;
     try {
       signupResponse = await this.authService.signup(signupData);
+      console.log(signupResponse);
     } catch (error) {
-      console.log(error);
-      this.router.navigate(['/']);
+      if (error.error instanceof ErrorEvent) {
+        console.log(error);
+      } else {
+        signupResponse = { ...error.error };
+      }
+      // this.router.navigate(['/']);
     }
     if (signupResponse.valid) {
       const authData: AuthData = {
@@ -106,6 +113,10 @@ export class SignupComponent implements OnInit {
       };
       await this.authService.authUser(authData);
       if (!authData.emailVerified) {
+        this.snackBarService.open(signupResponse.message, 'Ok', {
+          duration: 5 * 1000,
+        });
+
         // Open Dialog to ask for verification of email
         const emailVerficationDialogRef = this.dialogService.open(
           EmailVerificationComponent,
@@ -120,11 +131,10 @@ export class SignupComponent implements OnInit {
         if (emailVerificationDecision) {
           // Profile Route
           this.router.navigate(['']);
+        } else {
+          this.router.navigate(['/']);
         }
       }
-      this.snackBarService.open(signupResponse.message, 'Ok', {
-        duration: 5 * 1000,
-      });
     } else {
       // Open Dialog to show dialog data
       if ('dialog' in signupResponse) {

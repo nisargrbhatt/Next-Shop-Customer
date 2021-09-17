@@ -46,7 +46,7 @@ export class AuthService {
 
   async signup(signupData: SignupData): Promise<SignupResponse> {
     return await this.httpService
-      .post<SignupResponse>(BACKEND_URL + 'user/createUser', signupData)
+      .post<SignupResponse>(BACKEND_URL + '/user/createUser', signupData)
       .toPromise();
   }
 
