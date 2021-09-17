@@ -103,14 +103,14 @@ export class AuthService {
       return;
     }
     return {
-      token: token,
+      token,
       expirationDate: new Date(expirationDate),
-      userId: userId,
+      userId,
       userData: JSON.parse(userData),
     };
   }
 
-  autoAuthUser() {
+  autoAuthUser(): void {
     const authInformation = this.getAuthData();
     if (!authInformation) {
       return;
@@ -128,7 +128,7 @@ export class AuthService {
       this.logout();
     }
   }
-  logout() {
+  logout(): void {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
@@ -138,7 +138,7 @@ export class AuthService {
     this.clearAuthData();
     this.router.navigate(['/auth/login']);
   }
-  private clearAuthData() {
+  private clearAuthData(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
     localStorage.removeItem('userId');

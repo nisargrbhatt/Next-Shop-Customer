@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   backend_url: 'http://localhost:3001',
   backend_url_secure: 'https://localhost:3002',
+  debug: true,
 };
 
 /*

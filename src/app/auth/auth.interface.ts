@@ -6,36 +6,37 @@ export interface UserData {
   emailVerified: boolean;
 }
 
-export interface errorData {
+export interface ErrorData {
   code: string;
   message: string;
 }
 
-export interface dialogData {
+export interface DialogData {
   header: string;
   message: string;
 }
 
-export interface SignupResponseData{
+export interface SignupResponseData {
   token: string;
   expiresIn: number;
   role: string;
   access: string;
   emailVerified: boolean;
-  userId:string;
+  userId: string;
 }
-export interface SignupResponse{
-  message:string;
-  valid:boolean;
-  error?:errorData;
-  data?:SignupResponseData
+export interface SignupResponse {
+  message: string;
+  valid: boolean;
+  error?: ErrorData;
+  dialog?: DialogData;
+  data?: SignupResponseData;
 }
 
-export interface AuthData{
+export interface AuthData {
   token: string;
   expiresIn: number;
   role: string;
   access: string;
   emailVerified: boolean;
-  userId:string;
+  userId: string;
 }

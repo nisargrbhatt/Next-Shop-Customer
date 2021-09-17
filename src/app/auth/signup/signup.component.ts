@@ -1,3 +1,7 @@
+import { EmailVerificationComponent } from './../../shared/dialog/email-verification/email-verification.component';
+import { ErrorComponent } from './../../shared/dialog/error/error.component';
+import { environment } from 'src/environments/environment';
+import { ResMesComponent } from './../../shared/dialog/res-mes/res-mes.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { SignupResponse, AuthData } from './../auth.interface';
@@ -7,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './../auth.service';
 import { SignupData } from './signup.interface';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -31,6 +36,7 @@ export class SignupComponent implements OnInit {
     private emailValidator: EmailValidator,
     private router: Router,
     private snackBarService: MatSnackBar,
+    private dialogService: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +85,7 @@ export class SignupComponent implements OnInit {
     this.signupLoading = true;
     this.disableControl = true;
 
-    let signupData: SignupData = {
+    const signupData: SignupData = {
       email: this.signupForm.value.email,
       name: this.signupForm.value.name,
       password: this.signupForm.value.password,
@@ -95,19 +101,52 @@ export class SignupComponent implements OnInit {
       this.router.navigate(['/']);
     }
     if (signupResponse.valid) {
-      let authData: AuthData = {
+      const authData: AuthData = {
         ...signupResponse.data,
       };
       await this.authService.authUser(authData);
-      if(!authData.emailVerified){
+      if (!authData.emailVerified) {
         // Open Dialog to ask for verification of email
+        const emailVerficationDialogRef = this.dialogService.open(
+          EmailVerificationComponent,
+          {
+            autoFocus: true,
+            hasBackdrop: true,
+            disableClose: true,
+          },
+        );
+        const emailVerificationDecision: boolean =
+          await emailVerficationDialogRef.afterClosed().toPromise();
+        if (emailVerificationDecision) {
+          // Profile Route
+          this.router.navigate(['']);
+        }
       }
       this.snackBarService.open(signupResponse.message, 'Ok', {
         duration: 5 * 1000,
       });
-    }
-    else{
+    } else {
       // Open Dialog to show dialog data
+      if ('dialog' in signupResponse) {
+        const resMesDialogRef = this.dialogService.open(ResMesComponent, {
+          data: signupResponse.dialog,
+          autoFocus: true,
+          hasBackdrop: true,
+        });
+        await resMesDialogRef.afterClosed().toPromise();
+      }
+
+      // Open Dialog to show error data
+      if ('error' in signupResponse) {
+        if (environment.debug) {
+          const errorDialogRef = this.dialogService.open(ErrorComponent, {
+            data: signupResponse.error,
+            autoFocus: true,
+            hasBackdrop: true,
+          });
+          await errorDialogRef.afterClosed().toPromise();
+        }
+      }
     }
 
     this.disableControl = false;
