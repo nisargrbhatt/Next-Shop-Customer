@@ -24,12 +24,28 @@ export interface SignupResponseData {
   emailVerified: boolean;
   userId: string;
 }
+export interface LoginResponseData {
+  token: string;
+  expiresIn: number;
+  role: string;
+  access: string;
+  emailVerified: boolean;
+  userId: string;
+}
 export interface SignupResponse {
   message: string;
   valid: boolean;
   error?: ErrorData;
   dialog?: DialogData;
   data?: SignupResponseData;
+}
+
+export interface LoginResponse {
+  message: string;
+  valid: boolean;
+  error?: ErrorData;
+  dialog?: DialogData;
+  data?: LoginResponseData;
 }
 
 export interface AuthData {

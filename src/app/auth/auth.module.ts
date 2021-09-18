@@ -18,7 +18,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
   ],
   declarations: [SignupComponent, LoginComponent],
-  providers: [AuthService, EmailValidator],
+  providers: [EmailValidator],
   exports: [],
 })
 export class AuthModule {}

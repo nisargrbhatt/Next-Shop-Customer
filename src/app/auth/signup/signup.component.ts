@@ -105,7 +105,6 @@ export class SignupComponent implements OnInit {
       } else {
         signupResponse = { ...error.error };
       }
-      // this.router.navigate(['/']);
     }
     if (signupResponse.valid) {
       const authData: AuthData = {
@@ -157,6 +156,7 @@ export class SignupComponent implements OnInit {
           await errorDialogRef.afterClosed().toPromise();
         }
       }
+      this.router.navigate(['/']);
     }
 
     this.disableControl = false;

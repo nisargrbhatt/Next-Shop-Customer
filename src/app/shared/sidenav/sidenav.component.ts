@@ -1,13 +1,14 @@
+import { AuthService } from './../../auth/auth.service';
 import {
   Component,
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
 } from '@angular/core';
-
-import { NavList, NavListItem } from './navlist.data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidenav',
@@ -19,13 +20,21 @@ export class SidenavComponent implements OnInit, OnChanges {
   @Output() changeSideNavState: EventEmitter<boolean> =
     new EventEmitter<boolean>();
 
-  navList: NavListItem[] = NavList;
-
   isAuthenticated = false;
+  private authStatusSub: Subscription;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isAuthenticated = this.authService.IsAuth;
+    this.authStatusSub = this.authService.AuthStatusListener.subscribe(
+      (authStatus) => {
+        console.log(authStatus);
+
+        this.isAuthenticated = authStatus;
+      },
+    );
+  }
 
   closeNav(): void {
     this.changeSideNavState.emit(false);
@@ -42,13 +51,8 @@ export class SidenavComponent implements OnInit, OnChanges {
     }
   }
 
-  conditionCheck(condition: boolean, onAuthenticate: boolean): boolean {
-    if (condition && onAuthenticate) {
-      return this.isAuthenticated;
-    } else if (condition && !onAuthenticate) {
-      return !this.isAuthenticated;
-    } else {
-      return true;
-    }
+  logout(): void {
+    this.authService.logout();
+    this.closeNav();
   }
 }

@@ -1,5 +1,11 @@
+import { LoginData } from './login/login.interface';
 import { SignupData } from './signup/signup.interface';
-import { UserData, SignupResponse, AuthData } from './auth.interface';
+import {
+  UserData,
+  SignupResponse,
+  AuthData,
+  LoginResponse,
+} from './auth.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
@@ -9,7 +15,7 @@ import { environment } from 'src/environments/environment';
 const BACKEND_URL = environment.backend_url;
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: 'root',
 })
 export class AuthService {
   private isAuthenticated = false;
@@ -47,6 +53,12 @@ export class AuthService {
   async signup(signupData: SignupData): Promise<SignupResponse> {
     return await this.httpService
       .post<SignupResponse>(BACKEND_URL + '/user/createUser', signupData)
+      .toPromise();
+  }
+
+  async login(loginData: LoginData): Promise<LoginResponse> {
+    return await this.httpService
+      .post<LoginResponse>(BACKEND_URL + '/user/login', loginData)
       .toPromise();
   }
 
@@ -122,8 +134,8 @@ export class AuthService {
       this.isAuthenticated = true;
       this.userId = authInformation.userId;
       this.userData = authInformation.userData;
-      this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
+      this.setAuthTimer(expiresIn / 1000);
     } else {
       this.logout();
     }

@@ -1,14 +1,22 @@
 <div id="mySidenav" class="sidenav">
-  <a routerLink="/" class="closebtn" (click)="closeNav()">&times;</a>
-  <span *ngFor="let item of navList">
+  <a class="closebtn" (click)="closeNav()">&times;</a>
+
+  <span>
     <a
-      routerLink="{{ item.routerLink }}"
+      routerLink="auth/login"
       routerLinkActive="mat-accent"
+      *ngIf="!isAuthenticated"
       (click)="closeNav()"
-      *ngIf="conditionCheck(item.condition, item.onAuthenticate)"
-      ><mat-icon *ngIf="item.isMatIcon">{{ item.icon }}</mat-icon>
-      <img src="{{ item.icon }}" *ngIf="!item.isMatIcon" />
-      {{ item.name }}
-    </a>
+      ><mat-icon>login</mat-icon> Login</a
+    >
+    <a
+      routerLink="auth/signup"
+      routerLinkActive="mat-accent"
+      *ngIf="!isAuthenticated"
+      ><mat-icon>create</mat-icon> Signup</a
+    >
+    <a *ngIf="isAuthenticated" (click)="logout()"
+      ><mat-icon>logout</mat-icon> Logout</a
+    >
   </span>
 </div>
