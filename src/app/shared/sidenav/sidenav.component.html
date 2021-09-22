@@ -18,5 +18,11 @@
     <a *ngIf="isAuthenticated" (click)="logout()"
       ><mat-icon>logout</mat-icon> Logout</a
     >
+    <a
+      *ngIf="isAuthenticated"
+      routerLink="profile/profile-view"
+      routerLinkActive="mat-accent"
+      ><mat-icon>account_circle</mat-icon> Profile</a
+    >
   </span>
 </div>

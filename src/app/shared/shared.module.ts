@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ErrorComponent } from './dialog/error/error.component';
 import { ResMesComponent } from './dialog/res-mes/res-mes.component';
 import { EmailVerificationComponent } from './dialog/email-verification/email-verification.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   imports: [CommonModule, AngularMaterialModule, RouterModule],
@@ -17,8 +18,16 @@ import { EmailVerificationComponent } from './dialog/email-verification/email-ve
     ErrorComponent,
     ResMesComponent,
     EmailVerificationComponent,
+    LoaderComponent,
   ],
   providers: [],
-  exports: [SidenavComponent, HeaderComponent, ErrorComponent, ResMesComponent],
+  exports: [
+    SidenavComponent,
+    HeaderComponent,
+    ErrorComponent,
+    ResMesComponent,
+    EmailVerificationComponent,
+    LoaderComponent,
+  ],
 })
 export class SharedModule {}
