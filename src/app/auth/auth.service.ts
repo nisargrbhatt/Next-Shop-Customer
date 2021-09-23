@@ -12,7 +12,9 @@ import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
-const BACKEND_URL = environment.backend_url;
+const BACKEND_URL = environment.production
+  ? environment.backend_url_secure
+  : environment.backend_url;
 
 @Injectable({
   providedIn: 'root',

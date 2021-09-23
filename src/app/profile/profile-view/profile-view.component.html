@@ -1,1 +1,6 @@
-<p>profile-view works!</p>
+<div *ngIf="!pageLoding">
+  <pre *ngFor="let address of addresses.rows">
+  {{ address | json }}
+</pre
+  >
+</div>

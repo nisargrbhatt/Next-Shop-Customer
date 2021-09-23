@@ -64,7 +64,10 @@
         [disabled]="loginForm.invalid"
       >
         <span *ngIf="!loginLoading">Login</span>
-        <mat-progress-spinner mode="indeterminate" *ngIf="loginLoading"></mat-progress-spinner>
+        <mat-progress-spinner
+          mode="indeterminate"
+          *ngIf="loginLoading"
+        ></mat-progress-spinner>
       </button>
     </form>
   </div>

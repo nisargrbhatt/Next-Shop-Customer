@@ -78,6 +78,8 @@ export class SignupComponent implements OnInit {
         },
       ),
     });
+
+    this.pageLoading = false;
   }
 
   async onSubmit(): Promise<void> {
