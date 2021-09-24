@@ -11,10 +11,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path:'add-address',
-    component:AddAddressComponent,
-    canActivate:[AuthGuard]
-  }
+    path: 'add-address',
+    component: AddAddressComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

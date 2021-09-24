@@ -3,16 +3,16 @@
   justify-content: center;
   align-items: center;
 
-  #userdetails-form-edit-btn{
+  #userdetails-form-edit-btn {
     position: absolute;
-    top:1%;
-    right:0%
+    top: 1%;
+    right: 0%;
   }
 
-  #userdetails-form-close-btn{
+  #userdetails-form-close-btn {
     position: absolute;
-    top:1%;
-    right:0%
+    top: 1%;
+    right: 0%;
   }
 
   form {
@@ -23,7 +23,7 @@
     mat-form-field {
       display: block;
     }
-    button{
+    button {
       margin: 0.5rem 1rem;
     }
   }

@@ -93,7 +93,13 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Contact No</mat-label>
-        <input type="tel" name="contact_no" formControlName="contact_no" matInput placeholder="Enter your contact no" />
+        <input
+          type="tel"
+          name="contact_no"
+          formControlName="contact_no"
+          matInput
+          placeholder="Enter your contact no"
+        />
         <mat-error *ngIf="addressForm.get('contact_no').hasError('required')"
           >Contact no is required</mat-error
         >

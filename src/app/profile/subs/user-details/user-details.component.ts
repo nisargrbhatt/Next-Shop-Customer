@@ -1,4 +1,9 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import {
   GetUserDetailsData,
   GetUserDetailsResponse,
@@ -104,13 +109,13 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     this.userDetailsForm.get('contact_no').enable();
   }
 
-  get userDetailsFormEmail() {
+  get userDetailsFormEmail(): AbstractControl {
     return this.userDetailsForm.get('email');
   }
-  get userDetailsFormName() {
+  get userDetailsFormName(): AbstractControl {
     return this.userDetailsForm.get('name');
   }
-  get userDetailsFormContactNo() {
+  get userDetailsFormContactNo(): AbstractControl {
     return this.userDetailsForm.get('contact_no');
   }
 
@@ -165,15 +170,13 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   }
 
   async onUserDetailsFormSubmit(): Promise<void> {
-    if(this.userDetailsForm.invalid){
+    if (this.userDetailsForm.invalid) {
       return;
     }
     this.formLoading = true;
     this.disableUserDetailsForm();
-    
-    
+
     this.formLoading = false;
-    
   }
 
   ngOnDestroy(): void {

@@ -95,7 +95,7 @@ export class AddressesComponent implements OnInit, OnDestroy {
     this.pageLoding = false;
   }
 
-  getAddressKeys(address: AddressData) {
+  getAddressKeys(address: AddressData): string[] {
     // Dont show these keys
     const dontShow = ['userId', 'createdAt', 'updatedAt', 'id'];
 
@@ -104,7 +104,7 @@ export class AddressesComponent implements OnInit, OnDestroy {
     });
   }
 
-  addAddress():void{
+  addAddress(): void {
     // Add address form url
     this.router.navigate(['/profile/add-address']);
   }

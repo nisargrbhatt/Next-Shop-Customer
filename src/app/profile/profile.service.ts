@@ -25,7 +25,7 @@ export class ProfileService {
   }
 
   async getAddress(addressId: string): Promise<GetAddressResonse> {
-    let httpParam: HttpParams;
+    const httpParam: HttpParams = new HttpParams();
     httpParam.append('addressId', addressId);
     return await this.httpService
       .get<GetAddressResonse>(BACKEND_URL + '/address/getAddress', {

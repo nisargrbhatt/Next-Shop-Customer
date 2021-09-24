@@ -63,7 +63,7 @@ export interface GetUserDetailsResponse {
   dialog?: DialogData;
 }
 
-export interface AddAddressResponse{
+export interface AddAddressResponse {
   message: string;
   valid: boolean;
   error?: ErrorData;

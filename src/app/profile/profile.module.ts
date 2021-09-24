@@ -10,7 +10,12 @@ import { UserDetailsComponent } from './subs/user-details/user-details.component
 import { AddAddressComponent } from './add-address/add-address.component';
 
 @NgModule({
-  declarations: [ProfileViewComponent, AddressesComponent, UserDetailsComponent, AddAddressComponent],
+  declarations: [
+    ProfileViewComponent,
+    AddressesComponent,
+    UserDetailsComponent,
+    AddAddressComponent,
+  ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
