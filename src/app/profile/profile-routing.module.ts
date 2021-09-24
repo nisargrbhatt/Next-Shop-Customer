@@ -1,3 +1,4 @@
+import { AddAddressComponent } from './add-address/add-address.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,6 +10,11 @@ const routes: Routes = [
     component: ProfileViewComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path:'add-address',
+    component:AddAddressComponent,
+    canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({
