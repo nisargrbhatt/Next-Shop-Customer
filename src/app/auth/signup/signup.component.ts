@@ -100,7 +100,7 @@ export class SignupComponent implements OnInit {
     let signupResponse: SignupResponse;
     try {
       signupResponse = await this.authService.signup(signupData);
-      console.log(signupResponse);
+      
     } catch (error) {
       if (error.error instanceof ErrorEvent) {
         console.log(error);
