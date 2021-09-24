@@ -77,7 +77,6 @@ export class LoginComponent implements OnInit {
         loginResponse = { ...error.error };
       }
     }
-    console.log(loginResponse);
 
     if (loginResponse.valid) {
       const authData: AuthData = {
@@ -102,7 +101,7 @@ export class LoginComponent implements OnInit {
           await emailVerficationDialogRef.afterClosed().toPromise();
         if (emailVerificationDecision) {
           // Profile Route
-          this.router.navigate(['']);
+          this.router.navigate(['/profile/profile-view']);
         } else {
           this.router.navigate(['/']);
         }
