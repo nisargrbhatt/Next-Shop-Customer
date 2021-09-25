@@ -1,4 +1,4 @@
-export interface DialogData{
-  email:string;
-  name:string;
+export interface DialogData {
+  email: string;
+  name: string;
 }

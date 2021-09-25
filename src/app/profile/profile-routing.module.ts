@@ -17,10 +17,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path:'verify-email',
-    component:VerifyEmailComponent,
-    canActivate:[AuthGuard]
-  }
+    path: 'verify-email',
+    component: VerifyEmailComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

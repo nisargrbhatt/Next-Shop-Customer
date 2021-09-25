@@ -31,9 +31,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss'],
 })
-export class UserDetailsComponent
-  implements OnInit, OnDestroy
-{
+export class UserDetailsComponent implements OnInit, OnDestroy {
   private isAuthenticate = false;
   pageLoding = false;
   formLoading = false;
@@ -52,7 +50,6 @@ export class UserDetailsComponent
     private router: Router,
     private snackbarService: MatSnackBar,
     private dialogService: MatDialog,
-    
   ) {}
 
   ngOnInit(): void {
@@ -88,8 +85,6 @@ export class UserDetailsComponent
 
     this.getUserDetails();
   }
-
-  
 
   disableUserDetailsForm(): void {
     this.userDetailsFormDisabled = true;
@@ -173,8 +168,6 @@ export class UserDetailsComponent
 
     this.formLoading = false;
   }
-
-  
 
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();

@@ -21,9 +21,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './profile-view.component.html',
   styleUrls: ['./profile-view.component.scss'],
 })
-export class ProfileViewComponent
-  implements OnInit, OnDestroy
-{
+export class ProfileViewComponent implements OnInit, OnDestroy {
   private isAuthenticate = false;
   pageLoding = false;
   formLoading = false;
@@ -36,7 +34,6 @@ export class ProfileViewComponent
     private router: Router,
     private snackbarService: MatSnackBar,
     private dialogService: MatDialog,
-    
   ) {}
 
   ngOnInit(): void {
@@ -53,7 +50,6 @@ export class ProfileViewComponent
     );
     this.pageLoding = false;
   }
-  
 
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();

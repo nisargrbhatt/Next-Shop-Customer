@@ -53,14 +53,14 @@ export class AuthService {
     );
   }
 
-  async getNewUserData():Promise<void>{
+  async getNewUserData(): Promise<void> {
     this.userData = {
       ...this.userData,
-      emailVerified:true,
+      emailVerified: true,
     };
-    let authData = {
+    const authData = {
       ...this.userData,
-      userId:this.userId
+      userId: this.userId,
     };
     localStorage.removeItem('userData');
     localStorage.setItem('userData', JSON.stringify(authData));
@@ -80,22 +80,22 @@ export class AuthService {
 
   async authUser(authData: AuthData): Promise<boolean> {
     // return new Promise((resolve, reject) => {
-      this.token = authData.token;
-      this.userId = authData.userId;
-      this.userData = authData;
-      const expiresInDuration = authData.expiresIn;
-      this.setAuthTimer(expiresInDuration);
-      this.isAuthenticated = true;
-      this.authStatusListener.next(true);
-      const now = new Date();
-      const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-      this.saveAuthData(
-        expirationDate,
-        authData.token,
-        authData.userId,
-        authData,
-      );
-      return true;
+    this.token = authData.token;
+    this.userId = authData.userId;
+    this.userData = authData;
+    const expiresInDuration = authData.expiresIn;
+    this.setAuthTimer(expiresInDuration);
+    this.isAuthenticated = true;
+    this.authStatusListener.next(true);
+    const now = new Date();
+    const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+    this.saveAuthData(
+      expirationDate,
+      authData.token,
+      authData.userId,
+      authData,
+    );
+    return true;
     //   resolve(true);
     // });
   }

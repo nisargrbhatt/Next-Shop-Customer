@@ -19,7 +19,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: [SignupComponent, LoginComponent],
   providers: [EmailValidator],

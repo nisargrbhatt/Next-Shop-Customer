@@ -72,7 +72,6 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
       ),
     });
     this.getUserDetails();
-    
   }
 
   async getUserDetails(): Promise<void> {
