@@ -99,14 +99,18 @@ export class LoginComponent implements OnInit {
         );
         const emailVerificationDecision: boolean =
           await emailVerficationDialogRef.afterClosed().toPromise();
+        console.log(emailVerificationDecision);
+
         if (emailVerificationDecision) {
           // Profile Route
+
           this.router.navigate(['/profile/profile-view']);
         } else {
           this.router.navigate(['/']);
         }
+      } else {
+        this.router.navigate(['/']);
       }
-      this.router.navigate(['/']);
     } else {
       // Open Dialog to show dialog data
       if ('dialog' in loginResponse) {

@@ -4,7 +4,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from './../../auth/auth.service';
 import { ProfileService } from './../profile.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  AfterContentChecked,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorComponent } from 'src/app/shared/dialog/error/error.component';
 import { ResMesComponent } from 'src/app/shared/dialog/res-mes/res-mes.component';
@@ -15,7 +21,9 @@ import { environment } from 'src/environments/environment';
   templateUrl: './profile-view.component.html',
   styleUrls: ['./profile-view.component.scss'],
 })
-export class ProfileViewComponent implements OnInit, OnDestroy {
+export class ProfileViewComponent
+  implements OnInit, OnDestroy
+{
   private isAuthenticate = false;
   pageLoding = false;
   formLoading = false;
@@ -28,6 +36,7 @@ export class ProfileViewComponent implements OnInit, OnDestroy {
     private router: Router,
     private snackbarService: MatSnackBar,
     private dialogService: MatDialog,
+    
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +53,7 @@ export class ProfileViewComponent implements OnInit, OnDestroy {
     );
     this.pageLoding = false;
   }
+  
 
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();

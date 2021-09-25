@@ -130,7 +130,8 @@ export class SignupComponent implements OnInit {
           await emailVerficationDialogRef.afterClosed().toPromise();
         if (emailVerificationDecision) {
           // Profile Route
-          this.router.navigate(['']);
+
+          this.router.navigate(['/profile/profile-view']);
         } else {
           this.router.navigate(['/']);
         }

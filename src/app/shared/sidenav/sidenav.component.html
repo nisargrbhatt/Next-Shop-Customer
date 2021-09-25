@@ -13,6 +13,7 @@
       routerLink="auth/signup"
       routerLinkActive="mat-accent"
       *ngIf="!isAuthenticated"
+      (click)="closeNav()"
       ><mat-icon>create</mat-icon> Signup</a
     >
     <a

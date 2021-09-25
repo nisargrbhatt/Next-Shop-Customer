@@ -29,8 +29,6 @@ export class SidenavComponent implements OnInit, OnChanges {
     this.isAuthenticated = this.authService.IsAuth;
     this.authStatusSub = this.authService.AuthStatusListener.subscribe(
       (authStatus) => {
-        console.log(authStatus);
-
         this.isAuthenticated = authStatus;
       },
     );

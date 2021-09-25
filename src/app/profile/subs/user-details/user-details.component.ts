@@ -1,3 +1,4 @@
+import { VerifyEmailComponent } from '../../verify-email/verify-email.component';
 import {
   FormGroup,
   FormControl,
@@ -8,7 +9,13 @@ import {
   GetUserDetailsData,
   GetUserDetailsResponse,
 } from './../../profile.interface';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+  AfterContentChecked,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -24,14 +31,13 @@ import { environment } from 'src/environments/environment';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss'],
 })
-export class UserDetailsComponent implements OnInit, OnDestroy {
+export class UserDetailsComponent
+  implements OnInit, OnDestroy
+{
   private isAuthenticate = false;
   pageLoding = false;
   formLoading = false;
   showOtp = false;
-
-  otpForm: FormGroup;
-  otpFormDisabled = false;
 
   userDetailsForm: FormGroup;
   userDetailsFormDisabled = false;
@@ -46,35 +52,22 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     private router: Router,
     private snackbarService: MatSnackBar,
     private dialogService: MatDialog,
+    
   ) {}
 
   ngOnInit(): void {
     this.pageLoding = true;
 
     this.isAuthenticate = this.authService.IsAuth;
+
     this.authStatusSub = this.authService.AuthStatusListener.subscribe(
       (authStatus) => {
         this.isAuthenticate = authStatus;
         if (!this.isAuthenticate) {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         }
       },
     );
-
-    this.otpForm = new FormGroup({
-      otp: new FormControl(
-        { value: '', disabled: this.otpFormDisabled },
-        {
-          validators: [
-            Validators.required,
-            Validators.minLength(4),
-            Validators.maxLength(4),
-            Validators.min(0),
-            Validators.max(9999),
-          ],
-        },
-      ),
-    });
 
     this.userDetailsForm = new FormGroup({
       email: new FormControl(
@@ -95,6 +88,8 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
 
     this.getUserDetails();
   }
+
+  
 
   disableUserDetailsForm(): void {
     this.userDetailsFormDisabled = true;
@@ -178,6 +173,8 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
 
     this.formLoading = false;
   }
+
+  
 
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();

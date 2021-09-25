@@ -2,8 +2,10 @@ import { AddAddressData } from './add-address/add-address.interface';
 import { environment } from 'src/environments/environment';
 import {
   AddAddressResponse,
+  EmailOtpCheckResponse,
   GetAddressesResponse,
   GetAddressResonse,
+  GetEmailOtpResponse,
   GetUserDetailsResponse,
 } from './profile.interface';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -48,6 +50,20 @@ export class ProfileService {
         BACKEND_URL + '/address/createAddress',
         addAddressData,
       )
+      .toPromise();
+  }
+
+  async getEmailOtp(): Promise<GetEmailOtpResponse> {
+    return await this.httpService
+      .get<GetEmailOtpResponse>(BACKEND_URL + '/user/getEmailOtp')
+      .toPromise();
+  }
+
+  async emailOtpCheck(otpBody: {
+    otp: string;
+  }): Promise<EmailOtpCheckResponse> {
+    return await this.httpService
+      .post<EmailOtpCheckResponse>(BACKEND_URL + '/user/emailOtpCheck', otpBody)
       .toPromise();
   }
 }

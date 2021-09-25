@@ -69,3 +69,17 @@ export interface AddAddressResponse {
   error?: ErrorData;
   dialog?: DialogData;
 }
+
+export interface GetEmailOtpResponse {
+  message: string;
+  valid: boolean;
+  error?: ErrorData;
+  dialog?: DialogData;
+}
+
+export interface EmailOtpCheckResponse {
+  message: string;
+  valid: boolean;
+  error?: ErrorData;
+  dialog?: DialogData;
+}

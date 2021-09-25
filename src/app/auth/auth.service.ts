@@ -45,11 +45,25 @@ export class AuthService {
   get AuthStatusListener(): Observable<boolean> {
     return this.authStatusListener.asObservable();
   }
+
   checkEmail(email: string): Observable<{ ok: boolean }> {
     email = email.replace(' ', '').replace('[$!%*?&/]', '');
     return this.httpService.get<{ ok: boolean }>(
       BACKEND_URL + '/user/emailCheck?email=' + email,
     );
+  }
+
+  async getNewUserData():Promise<void>{
+    this.userData = {
+      ...this.userData,
+      emailVerified:true,
+    };
+    let authData = {
+      ...this.userData,
+      userId:this.userId
+    };
+    localStorage.removeItem('userData');
+    localStorage.setItem('userData', JSON.stringify(authData));
   }
 
   async signup(signupData: SignupData): Promise<SignupResponse> {
@@ -65,7 +79,7 @@ export class AuthService {
   }
 
   async authUser(authData: AuthData): Promise<boolean> {
-    return new Promise((resolve, reject) => {
+    // return new Promise((resolve, reject) => {
       this.token = authData.token;
       this.userId = authData.userId;
       this.userData = authData;
@@ -81,8 +95,9 @@ export class AuthService {
         authData.userId,
         authData,
       );
-      resolve(true);
-    });
+      return true;
+    //   resolve(true);
+    // });
   }
 
   private setAuthTimer(duration: number): void {
