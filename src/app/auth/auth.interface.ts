@@ -12,6 +12,7 @@ export interface OAuthCallBody {
   email: string;
   name: string;
   sub: string;
+
   email_verified: boolean;
   role: string;
 }
