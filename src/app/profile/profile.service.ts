@@ -1,5 +1,9 @@
 import { AddAddressData } from './add-address/add-address.interface';
-import { environment } from 'src/environments/environment';
+import {
+  environment,
+  secureAPIURIs,
+  basicAPIURIs,
+} from 'src/environments/environment';
 import {
   AddAddressResponse,
   EmailOtpCheckResponse,
@@ -22,7 +26,7 @@ export class ProfileService {
 
   async getAddresses(): Promise<GetAddressesResponse> {
     return await this.httpService
-      .get<GetAddressesResponse>(BACKEND_URL + '/address/getAddresses')
+      .get<GetAddressesResponse>(BACKEND_URL + secureAPIURIs.getAddresses)
       .toPromise();
   }
 
@@ -30,7 +34,7 @@ export class ProfileService {
     const httpParam: HttpParams = new HttpParams();
     httpParam.append('addressId', addressId);
     return await this.httpService
-      .get<GetAddressResonse>(BACKEND_URL + '/address/getAddress', {
+      .get<GetAddressResonse>(BACKEND_URL + secureAPIURIs.getAddress, {
         params: httpParam,
       })
       .toPromise();
@@ -38,7 +42,7 @@ export class ProfileService {
 
   async getUserDetails(): Promise<GetUserDetailsResponse> {
     return await this.httpService
-      .get<GetUserDetailsResponse>(BACKEND_URL + '/user/getUser')
+      .get<GetUserDetailsResponse>(BACKEND_URL + secureAPIURIs.getUser)
       .toPromise();
   }
 
@@ -47,7 +51,7 @@ export class ProfileService {
   ): Promise<AddAddressResponse> {
     return await this.httpService
       .post<AddAddressResponse>(
-        BACKEND_URL + '/address/createAddress',
+        BACKEND_URL + secureAPIURIs.createAddress,
         addAddressData,
       )
       .toPromise();
@@ -55,7 +59,7 @@ export class ProfileService {
 
   async getEmailOtp(): Promise<GetEmailOtpResponse> {
     return await this.httpService
-      .get<GetEmailOtpResponse>(BACKEND_URL + '/user/getEmailOtp')
+      .get<GetEmailOtpResponse>(BACKEND_URL + secureAPIURIs.getEmailOtp)
       .toPromise();
   }
 
@@ -63,7 +67,10 @@ export class ProfileService {
     otp: string;
   }): Promise<EmailOtpCheckResponse> {
     return await this.httpService
-      .post<EmailOtpCheckResponse>(BACKEND_URL + '/user/emailOtpCheck', otpBody)
+      .post<EmailOtpCheckResponse>(
+        BACKEND_URL + secureAPIURIs.emailOtpCheck,
+        otpBody,
+      )
       .toPromise();
   }
 }
