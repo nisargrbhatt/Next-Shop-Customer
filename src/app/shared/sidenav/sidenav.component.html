@@ -3,7 +3,13 @@
 
   <span>
     <a
-      routerLink="auth/login"
+      routerLink="cart/show-cart"
+      routerLinkActive="mat-accent"
+      *ngIf="isAuthenticated"
+      (click)="closeNav()"
+      ><mat-icon>shopping_cart</mat-icon> Cart</a
+    >
+    <a
       routerLinkActive="mat-accent"
       *ngIf="!isAuthenticated"
       (click)="auth0Login()"
