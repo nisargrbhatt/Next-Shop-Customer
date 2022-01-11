@@ -12,7 +12,7 @@ import {
   GetEmailOtpResponse,
   GetUserDetailsResponse,
 } from './profile.interface';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 const BACKEND_URL = environment.production
@@ -26,23 +26,21 @@ export class ProfileService {
 
   async getAddresses(): Promise<GetAddressesResponse> {
     return await this.httpService
-      .get<GetAddressesResponse>(BACKEND_URL + secureAPIURIs.getAddresses)
+      .get<GetAddressesResponse>(BACKEND_URL + secureAPIURIs.getAddresses.url)
       .toPromise();
   }
 
   async getAddress(addressId: string): Promise<GetAddressResonse> {
-    const httpParam: HttpParams = new HttpParams();
-    httpParam.append('addressId', addressId);
     return await this.httpService
-      .get<GetAddressResonse>(BACKEND_URL + secureAPIURIs.getAddress, {
-        params: httpParam,
-      })
+      .get<GetAddressResonse>(
+        BACKEND_URL + secureAPIURIs.getAddress.url + `/?addressId=${addressId}`,
+      )
       .toPromise();
   }
 
   async getUserDetails(): Promise<GetUserDetailsResponse> {
     return await this.httpService
-      .get<GetUserDetailsResponse>(BACKEND_URL + secureAPIURIs.getUser)
+      .get<GetUserDetailsResponse>(BACKEND_URL + secureAPIURIs.getUser.url)
       .toPromise();
   }
 
@@ -51,7 +49,7 @@ export class ProfileService {
   ): Promise<AddAddressResponse> {
     return await this.httpService
       .post<AddAddressResponse>(
-        BACKEND_URL + secureAPIURIs.createAddress,
+        BACKEND_URL + secureAPIURIs.createAddress.url,
         addAddressData,
       )
       .toPromise();
@@ -59,7 +57,7 @@ export class ProfileService {
 
   async getEmailOtp(): Promise<GetEmailOtpResponse> {
     return await this.httpService
-      .get<GetEmailOtpResponse>(BACKEND_URL + secureAPIURIs.getEmailOtp)
+      .get<GetEmailOtpResponse>(BACKEND_URL + secureAPIURIs.getEmailOtp.url)
       .toPromise();
   }
 
@@ -68,7 +66,7 @@ export class ProfileService {
   }): Promise<EmailOtpCheckResponse> {
     return await this.httpService
       .post<EmailOtpCheckResponse>(
-        BACKEND_URL + secureAPIURIs.emailOtpCheck,
+        BACKEND_URL + secureAPIURIs.emailOtpCheck.url,
         otpBody,
       )
       .toPromise();

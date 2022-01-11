@@ -19,7 +19,7 @@ export class CartService {
 
   async getCart(): Promise<GetCartResponse> {
     return await this.httpService
-      .get<GetCartResponse>(BACKEND_URL + secureAPIURIs.getCart)
+      .get<GetCartResponse>(BACKEND_URL + secureAPIURIs.getCart.url)
       .toPromise();
   }
 }
