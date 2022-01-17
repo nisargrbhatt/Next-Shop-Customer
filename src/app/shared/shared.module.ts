@@ -8,6 +8,7 @@ import { ErrorComponent } from './dialog/error/error.component';
 import { ResMesComponent } from './dialog/res-mes/res-mes.component';
 import { EmailVerificationComponent } from './dialog/email-verification/email-verification.component';
 import { LoaderComponent } from './loader/loader.component';
+import { CartShowEditComponent } from './cart/cart-show-edit/cart-show-edit.component';
 
 @NgModule({
   imports: [CommonModule, AngularMaterialModule, RouterModule],
@@ -18,6 +19,7 @@ import { LoaderComponent } from './loader/loader.component';
     ResMesComponent,
     EmailVerificationComponent,
     LoaderComponent,
+    CartShowEditComponent,
   ],
   providers: [],
   exports: [
@@ -27,6 +29,7 @@ import { LoaderComponent } from './loader/loader.component';
     ResMesComponent,
     EmailVerificationComponent,
     LoaderComponent,
+    CartShowEditComponent,
   ],
 })
 export class SharedModule {}

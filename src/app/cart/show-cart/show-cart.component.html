@@ -1,1 +1,22 @@
-<p>show-cart works!</p>
+<div class="hero">
+  <div class="hero-bar">
+    <div class="bar-cart-count">Count: {{ cartData?.count || 0 }}</div>
+    <div class="bar-actions">
+      <button mat-raised-button color="primary" type="button">
+        Checkout <mat-icon>arrow_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-data" *ngIf="cartData">
+    <div class="cart-items">
+      <app-cart-show-edit
+        *ngFor="let cartItem of cartData.rows"
+        [cartItem]="cartItem"
+      ></app-cart-show-edit>
+    </div>
+    <div class="cart-items-null" *ngIf="cartData.count === 0">
+      Cart is empty.
+    </div>
+  </div>
+</div>

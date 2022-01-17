@@ -27,3 +27,35 @@ export interface GetCartResponse {
   error?: ErrorData;
   dialog?: DialogData;
 }
+
+export interface UpdateQuantityCartData {
+  quantity: number;
+  cartId: string;
+}
+
+export interface UpdateQuantityCartResponse {
+  message: string;
+  valid: boolean;
+  data?: GetCartResponseData;
+  error?: ErrorData;
+}
+
+export interface AddToCartData {
+  quantity: number;
+  priceId: string;
+  productId: string;
+}
+
+export interface AddToCartResponse {
+  message: string;
+  valid: boolean;
+  data?: GetCartResponseData;
+  error?: ErrorData;
+}
+
+export interface DeleteTheItemResponse {
+  message: string;
+  valid: boolean;
+  data?: GetCartResponseData;
+  error?: ErrorData;
+}

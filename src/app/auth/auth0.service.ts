@@ -1,3 +1,4 @@
+import { CartService } from './../cart/cart.service';
 import {
   OAuthCallBody,
   OAuthCallResponse,
@@ -31,6 +32,7 @@ export class Auth0Service {
     private httpService: HttpClient,
     private authService: AuthService,
     private dialogService: MatDialog,
+    private cartService: CartService,
   ) {
     this.authService.error$.subscribe((error) => {
       console.log(error);
@@ -41,6 +43,7 @@ export class Auth0Service {
       this.authStatusListener.next(authStatus);
 
       if (authStatus) {
+        this.cartService.getCart();
         this.authService.user$.subscribe((profileClaims) => {
           this.counter++;
 

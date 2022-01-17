@@ -1,4 +1,7 @@
+import { GetCartResponseData } from './../cart.interface';
+import { CartService } from './../cart.service';
 import { Component, OnInit } from '@angular/core';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-show-cart',
@@ -6,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./show-cart.component.scss'],
 })
 export class ShowCartComponent implements OnInit {
-  constructor() {}
+  private subs = new SubSink();
 
-  ngOnInit(): void {}
+  cartData: GetCartResponseData;
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.subs.sink = this.cartService.CartObservable.subscribe((data) => {
+      this.cartData = data;
+    });
+  }
 }
