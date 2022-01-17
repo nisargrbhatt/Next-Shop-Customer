@@ -1,0 +1,51 @@
+.hero {
+  width: 18rem;
+  height: 32rem;
+  padding: 0.5rem;
+  margin: 0;
+  display: flex;
+}
+
+.hero-image {
+  flex: 30%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.hero-details {
+  flex: 70%;
+  font-family: 'Fira Code' monospace;
+  font-weight: 550;
+}
+
+.hero-detail {
+  .product-name {
+    font-size: 1.5rem;
+    color: black;
+    a {
+      text-decoration: none;
+    }
+    margin-top: 0.5rem;
+  }
+
+  .product-category {
+    font-size: 0.8rem;
+    color: gray;
+    margin-top: 0.2rem;
+  }
+}
+
+.hero-quantity {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: space-around;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,55 @@
+<div class="hero" *ngIf="cartItem">
+  <div class="hero-image">
+    <img [src]="cartItem.product.images[0].url" [alt]="cartItem.product.name" />
+  </div>
+  <div class="hero-details">
+    <div class="hero-detail">
+      <div class="product-name">
+        <a [routerLink]="['/product/show/', cartItem.product.id]">
+          {{ cartItem.product.name }}</a
+        >
+      </div>
+      <div class="product-category">
+        {{ cartItem.product.category.name }}
+      </div>
+    </div>
+
+    <div class="hero-quantity">
+      <button
+        type="button"
+        (click)="quantity.setValue(quantity.value + 1)"
+        *ngIf="quantity.value < 5"
+        mat-icon-button
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <input
+        type="number"
+        min="0"
+        max="5"
+        [formControl]="quantity"
+        matInput
+        name="quantity"
+      />
+      <button
+        type="button"
+        (click)="quantity.setValue(quantity.value - 1)"
+        *ngIf="quantity.value > 0"
+        mat-icon-button
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+      <div class="hero-actions">
+        <button
+          type="button"
+          (click)="deleteTheItem()"
+          mat-raised-button
+          color="warn"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
