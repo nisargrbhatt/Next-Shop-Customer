@@ -1,0 +1,14 @@
+<drag-scroll scrollbar-hidden="true" #nav>
+  <div
+    class="product-cards"
+    drag-scroll-item
+    *ngFor="let product of productsDetails"
+  >
+    <app-product-card-small
+      [productDetails]="getProductDetails(product)"
+      actionName="Open"
+      actionIcon="open_in_full"
+      (actionClick)="cardClick($event)"
+    ></app-product-card-small>
+  </div>
+</drag-scroll>

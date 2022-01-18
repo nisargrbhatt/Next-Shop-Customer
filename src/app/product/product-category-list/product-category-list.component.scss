@@ -1,0 +1,19 @@
+.hero {
+  padding: 0;
+  margin: 0;
+}
+.hero-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  mat-form-field {
+    width: 70%;
+  }
+}
+.hero-data {
+  margin-top: 1rem;
+}
+.hero-data-result-null {
+  text-align: center;
+}

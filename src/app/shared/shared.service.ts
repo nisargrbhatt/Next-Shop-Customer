@@ -45,4 +45,10 @@ export class SharedService {
     this.router.navigate(['/']);
     return EMPTY;
   }
+
+  searchFilter(search: string): string {
+    return search
+      .replace(/\(.*\)|\(|\)/g, '')
+      .replace(/[.*+?^${}()|[\]\\]/g, '');
+  }
 }

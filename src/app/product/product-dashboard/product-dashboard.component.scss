@@ -1,0 +1,23 @@
+.hero {
+  padding: 0;
+  margin: 0;
+}
+.hero-data-category {
+  .data-categories {
+    .categories {
+      .category {
+        .category-bar {
+          margin: 0.3rem 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .category-name {
+            font-family: 'Fira Code' monospace;
+            font-weight: 550;
+            font-size: large;
+          }
+        }
+      }
+    }
+  }
+}

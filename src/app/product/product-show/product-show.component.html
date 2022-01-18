@@ -1,0 +1,104 @@
+<div class="hero" *ngIf="productDetails">
+  <!-- First Part  -->
+  <div class="hero-first mat-elevation-z8">
+    <!-- Image Part -->
+    <div class="product-images">
+      <div class="product-big-image">
+        <img
+          ngxViewer
+          [src]="productDetails.images[selectedImage].url"
+          [alt]="productDetails.images[selectedImage].name"
+        />
+      </div>
+      <div class="product-small-images">
+        <img
+          *ngFor="let image of productDetails.images; let i = index"
+          [src]="image.url"
+          [alt]="image.name"
+          (mouseover)="selectedImage = i"
+        />
+      </div>
+    </div>
+    <!-- Product Details Part -->
+    <div class="product-details">
+      <div class="product-name">
+        {{ productDetails.name }}
+      </div>
+      <div class="product-category">
+        {{ productDetails.category.name }}
+      </div>
+      <div class="product-stars">
+        <div class="star-yellow" *ngIf="reviewStar / 5 >= 1"></div>
+        <div class="star-yellow" *ngIf="reviewStar / 4 >= 1"></div>
+        <div class="star-yellow" *ngIf="reviewStar / 3 >= 1"></div>
+        <div class="star-yellow" *ngIf="reviewStar / 2 >= 1"></div>
+        <div class="star-yellow" *ngIf="reviewStar / 1 >= 1"></div>
+        <div class="star-grey" *ngIf="5 - reviewStar > 0"></div>
+        <div class="star-grey" *ngIf="4 - reviewStar > 0"></div>
+        <div class="star-grey" *ngIf="3 - reviewStar > 0"></div>
+        <div class="star-grey" *ngIf="2 - reviewStar > 0"></div>
+        <div class="star-grey" *ngIf="1 - reviewStar > 0"></div>
+
+        <div class="review-count">
+          ( {{ productDetails.reviewes.length }} reviews)
+        </div>
+      </div>
+      <div class="product-small-description">
+        {{ productDetails.small_description }}
+      </div>
+
+      <div class="product-actions"></div>
+    </div>
+  </div>
+
+  <!-- Product Price Part  -->
+  <div class="hero-second mat-elevation-z8" *ngIf="productDetails.prices">
+    <app-product-price-table
+      [priceData]="productDetails.prices"
+      (addToCart)="addToCart($event)"
+      (removeToCart)="removeToCart($event)"
+    ></app-product-price-table>
+  </div>
+
+  <!-- Product Description  -->
+  <div class="hero-third mat-elevation-z8">
+    <div class="product-description">
+      <div class="product-description-label">Description</div>
+      <div class="product-description-value">
+        {{ productDetails.description }}
+      </div>
+    </div>
+    <div class="product-specifications">
+      <div class="product-specifications-label">Specifications</div>
+      <table class="product-specifications-table">
+        <tr *ngFor="let specification of productDetails.specification">
+          <td class="specification-label">{{ specification.label }}</td>
+          <td class="specification-value">{{ specification.value }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Product Reviews -->
+  <div class="hero-fourth mat-elevation-z8">
+    <div class="product-reviewes-label">Reviews</div>
+    <div class="product-reviewes-value">
+      <div
+        class="product-review"
+        *ngFor="let review of productDetails.reviewes"
+      >
+        <div class="review-name">
+          {{ review.user.name }}
+        </div>
+        <mat-divider></mat-divider>
+        <div class="review-message">
+          {{ review.message }}
+        </div>
+      </div>
+      <div class="review-null-text" *ngIf="!productDetails.reviewes.length">
+        No Reviews found
+      </div>
+    </div>
+  </div>
+</div>
+<div class="space-div"></div>

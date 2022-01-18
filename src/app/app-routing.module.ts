@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: () => import('./cart/cart.module').then((m) => m.CartModule),
   },
   {
+    path: '',
+    loadChildren: () =>
+      import('./product/product.module').then((m) => m.ProductModule),
+  },
+  {
     path: '**',
     component: Error404Component,
   },

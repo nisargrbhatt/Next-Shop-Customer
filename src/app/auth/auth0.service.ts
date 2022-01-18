@@ -6,7 +6,7 @@ import {
 } from './auth.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService, User } from '@auth0/auth0-angular';
 import { MatDialog } from '@angular/material/dialog';
@@ -26,7 +26,7 @@ export class Auth0Service {
   private auth0ProfileClaims: User;
 
   private counter = 0;
-  private authStatusListener = new Subject<boolean>();
+  private authStatusListener = new BehaviorSubject<boolean>(false);
 
   constructor(
     private httpService: HttpClient,
@@ -143,6 +143,10 @@ export class Auth0Service {
     this.clearTheAuth0Data();
     this.authService.logout();
     this.authStatusListener.next(false);
+  }
+
+  login(): void {
+    this.authService.loginWithRedirect().subscribe();
   }
 
   get ProfileClaims(): Auth0ProfileData {
