@@ -1,0 +1,33 @@
+<div class="hero" *ngIf="searchData">
+  <div class="hero-data-search">
+    <mat-accordion multi="true">
+      <div class="container-fluid">
+        <div class="row" style="margin-left: 3%; margin-right: 3%">
+          <div
+            class="col-xs-6 col-md-4"
+            *ngFor="let product of searchData.rows"
+          >
+            <app-product-card-small
+              [productDetails]="getProductCardDetails(product)"
+              [cardHeight]="32"
+              [cardWidth]="25"
+              actionName="Open"
+              actionIcon="open_in_full"
+              (actionClick)="onProductClick($event)"
+            ></app-product-card-small>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-data-result-null" *ngIf="searchData.count === 0">
+        No Product Found
+      </div>
+    </mat-accordion>
+    <mat-paginator
+      *ngIf="searchData.count"
+      [length]="searchData.count"
+      [pageSize]="pageSize"
+      (page)="onPageChange($event)"
+    ></mat-paginator>
+  </div>
+</div>

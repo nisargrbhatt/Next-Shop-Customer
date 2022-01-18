@@ -1,0 +1,79 @@
+import { SubSink } from 'subsink';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ProductService } from './../product.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { filter, switchMap } from 'rxjs/operators';
+import {
+  GetAllProductWithCategoryImageByCategoryIdResponseData,
+  ProductData,
+} from '../product.interface';
+import { FormControl } from '@angular/forms';
+import { PageEvent } from '@angular/material/paginator';
+import { ProductCardSmallDetails } from 'src/app/shared/product/product.interface';
+
+@Component({
+  selector: 'app-product-search',
+  templateUrl: './product-search.component.html',
+  styleUrls: ['./product-search.component.scss'],
+})
+export class ProductSearchComponent implements OnInit, OnDestroy {
+  private subs = new SubSink();
+
+  search = '';
+
+  searchData: GetAllProductWithCategoryImageByCategoryIdResponseData;
+
+  currentPage = new FormControl(1);
+  currentPage$ = this.currentPage.valueChanges;
+
+  pageSize = 10;
+
+  totalProducts = 0;
+
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
+
+  ngOnInit(): void {
+    this.subs.sink = this.route.paramMap
+      .pipe(
+        filter((paramMap: ParamMap) => paramMap.has('search')),
+        switchMap((paramMap: ParamMap) => {
+          this.search = paramMap.get('search');
+          return this.productService.getAllProductWithCategoryImageBySearch(
+            this.currentPage.value,
+            this.pageSize,
+            this.search,
+          );
+        }),
+      )
+      .subscribe((data) => {
+        this.searchData = data;
+        this.totalProducts = data.count;
+      });
+  }
+
+  onPageChange(pageData: PageEvent): void {
+    this.currentPage.setValue(pageData.pageIndex + 1);
+  }
+
+  onProductClick(slug: string): void {
+    this.router.navigate(['/', slug]);
+  }
+
+  getProductCardDetails(product: ProductData): ProductCardSmallDetails {
+    return {
+      id: product.id,
+      category: product.category.name,
+      image: product.images[0].url,
+      name: product.name,
+      slug: product.slug,
+    };
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+}

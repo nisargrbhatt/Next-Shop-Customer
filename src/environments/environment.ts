@@ -74,7 +74,7 @@ export const secureAPIURIs = {
   // Cart Controller
   addToCart: { url: '/cart/addToCart', hasQuery: false },
   updateQuantityCart: { url: '/cart/updateQuantityCart', hasQuery: false },
-  deleteTheItem: { url: '/cart/deleteTheItem', hasQuery: false },
+  deleteTheItem: { url: '/cart/deleteTheItem', hasQuery: true },
   getCart: { url: '/cart/getCart', hasQuery: false },
   // Price Controller
   addPrice: { url: '/price/addPrice', hasQuery: false },

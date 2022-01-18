@@ -1,0 +1,29 @@
+<div class="hero">
+  <div class="hero-data-category">
+    <div class="data-categories" *ngIf="categoryData">
+      <div class="categories" *ngFor="let category of categoryData.rows">
+        <div class="category" *ngIf="category.products.length > 0">
+          <div class="category-bar">
+            <div class="category-name">
+              {{ category.name }}
+            </div>
+            <div class="category-show-btn">
+              <button
+                mat-button
+                color="primary"
+                [routerLink]="['/category/', category.id]"
+              >
+                View All <mat-icon>navigate_next</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="category-products">
+            <app-product-scroll-cards
+              [productsDetails]="category.products"
+            ></app-product-scroll-cards>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

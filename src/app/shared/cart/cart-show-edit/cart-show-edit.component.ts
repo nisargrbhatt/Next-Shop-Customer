@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { CartService } from './../../../cart/cart.service';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { CartData } from 'src/app/cart/cart.interface';
 
 @Component({
   selector: 'app-cart-show-edit',
@@ -12,7 +13,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 export class CartShowEditComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
 
-  @Input() cartItem: any;
+  @Input() cartItem: CartData;
 
   quantity: FormControl = new FormControl('', {
     validators: [Validators.required, Validators.min(1), Validators.max(5)],
@@ -22,6 +23,7 @@ export class CartShowEditComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
+    this.quantity.setValue(this.cartItem.quantity);
     this.subs.sink = this.quantity$
       .pipe(debounceTime(500), distinctUntilChanged())
       .subscribe((quantityChanged) => {

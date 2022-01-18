@@ -8,6 +8,34 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span class="brand-hero"><a routerLink="/">Next Shop</a></span>
+  <div class="spacer"></div>
+  <div class="hero-search">
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        [formControl]="search"
+        [matAutocomplete]="auto"
+        #searchInput
+        placeholder="Search Products"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of searchLookaheads$ | async"
+          [value]="option.name"
+        >
+          <img
+            class="example-option-img"
+            aria-hidden
+            [src]="option.images[0].url"
+            height="25"
+          />
+          <span>{{ option.name }}</span> |
+          <small>Category: {{ option.category.name }}</small>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
 </mat-toolbar>
 <app-sidenav
   [sideNavShow]="sideNavShow"

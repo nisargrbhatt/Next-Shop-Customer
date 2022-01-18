@@ -17,7 +17,7 @@ export interface Cart {
 
 export interface GetCartResponseData {
   count: number;
-  rows: any[];
+  rows: CartData[];
 }
 
 export interface GetCartResponse {
@@ -58,4 +58,73 @@ export interface DeleteTheItemResponse {
   valid: boolean;
   data?: GetCartResponseData;
   error?: ErrorData;
+}
+
+export interface CartData {
+  id: string;
+  quantity: number;
+  priceId: string;
+  productId: string;
+  userId: string;
+  createdAt: string;
+  updatedAt: string;
+  price: Price;
+  product: Product;
+}
+
+export interface Price {
+  id: string;
+  price: number;
+  stock: number;
+  merchantId: string;
+  productId: string;
+  createdAt: string;
+  updatedAt: string;
+  user: User;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  contact_no?: string;
+  role: string;
+
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  small_description: string;
+  specification: string;
+  slug: string;
+  decline_count: number;
+  decline_reason: string;
+  approval_status: boolean;
+  productApproved: boolean;
+  categoryId: string;
+  userId: string;
+  createdAt: string;
+  updatedAt: string;
+  category: Category;
+  images: Image[];
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Image {
+  id: string;
+  name: string;
+  url: string;
+  productId: string;
+  createdAt: string;
+  updatedAt: string;
 }

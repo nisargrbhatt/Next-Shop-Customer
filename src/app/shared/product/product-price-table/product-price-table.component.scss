@@ -1,0 +1,15 @@
+.table-data {
+  border: none;
+  width: 100%;
+  border-radius: 1rem;
+  margin: 0;
+  padding: 1rem;
+}
+table {
+  width: 100%;
+
+  td,
+  th {
+    width: 20%;
+  }
+}
