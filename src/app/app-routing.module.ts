@@ -28,6 +28,11 @@ const routes: Routes = [
       import('./payment/payment.module').then((m) => m.PaymentModule),
   },
   {
+    path: 'order',
+    loadChildren: () =>
+      import('./order/order.module').then((m) => m.OrderModule),
+  },
+  {
     path: '**',
     component: Error404Component,
   },

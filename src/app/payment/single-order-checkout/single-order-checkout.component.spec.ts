@@ -8,9 +8,8 @@ describe('SingleOrderCheckoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SingleOrderCheckoutComponent ]
-    })
-    .compileComponents();
+      declarations: [SingleOrderCheckoutComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

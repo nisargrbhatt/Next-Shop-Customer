@@ -19,9 +19,9 @@ const BACKEND_URL = environment.production
 export class RazorpayComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
 
-  showPageMessage: boolean = false;
-  showFailedMessage: boolean = false;
-  showFullyFailedMessage: boolean = true;
+  showPageMessage = false;
+  showFailedMessage = false;
+  showFullyFailedMessage = true;
 
   razorPayPrefillData: GetOrderPrefillsResponseData;
 
