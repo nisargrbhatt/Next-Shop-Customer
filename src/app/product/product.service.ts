@@ -21,6 +21,11 @@ import {
   secureAPIURIs,
   basicAPIURIs,
 } from 'src/environments/environment';
+import {
+  CreateSingleProductOrderData,
+  CreateSingleProductOrderResponseData,
+  CreateSingleProductOrderResponse,
+} from '../payment/payment.interface';
 
 const BACKEND_URL = environment.production
   ? environment.backend_url_secure
@@ -38,13 +43,13 @@ export class ProductService {
   ) {}
 
   getProductWithCategoryPriceReviewManufacturer(
-    productId?: string,
+    productSlug: string,
   ): Observable<FullProductData> {
     return this.httpService
       .get<GetProductWithCategoryPriceReviewManufacturerResponse>(
         BACKEND_URL +
           basicAPIURIs.getProductWithCategoryPriceReviewManufacturer +
-          `/?productSlug=${productId}`,
+          `/?productSlug=${productSlug}`,
       )
       .pipe(map((response) => response.data));
   }
@@ -90,6 +95,16 @@ export class ProductService {
         BACKEND_URL +
           basicAPIURIs.getAllProductLookaheadWithCategoryImageBySearch +
           `/?search=${encodeURI(this.sharedService.searchFilter(search))}`,
+      )
+      .pipe(map((response) => response.data));
+  }
+
+  getProductWithCategory(productId: string): Observable<FullProductData> {
+    return this.httpService
+      .get<GetProductWithCategoryPriceReviewManufacturerResponse>(
+        BACKEND_URL +
+          basicAPIURIs.getProductWithCategory +
+          `/?productId=${productId}`,
       )
       .pipe(map((response) => response.data));
   }

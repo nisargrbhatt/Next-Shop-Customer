@@ -23,6 +23,11 @@ const routes: Routes = [
       import('./product/product.module').then((m) => m.ProductModule),
   },
   {
+    path: 'buy',
+    loadChildren: () =>
+      import('./payment/payment.module').then((m) => m.PaymentModule),
+  },
+  {
     path: '**',
     component: Error404Component,
   },

@@ -11,6 +11,7 @@ export const environment = {
   auth0Audience: 'http://localhost:3001',
   auth0Domain: 'dev-qf3-53r4.us.auth0.com',
   role: 'Customer',
+  razorpay_id: 'rzp_test_FDDBPVq3BTSyRc',
 };
 
 export const basicAPIURIs = {
@@ -111,8 +112,26 @@ export const secureAPIURIs = {
     hasQuery: true,
   },
   // KYCImage Controller
-  addKYCImage: { url: 'kyc-image/addKYCImage', hasQuery: false },
-  deleteKYCImage: { url: 'kyc-image/deleteKYCImage', hasQuery: false },
+  addKYCImage: { url: '/kyc-image/addKYCImage', hasQuery: false },
+  deleteKYCImage: { url: '/kyc-image/deleteKYCImage', hasQuery: false },
+  // Order Controller
+  createSingleProductOrder: {
+    url: '/order/createSingleProductOrder',
+    hasQuery: false,
+  },
+  getOrderPrefills: {
+    url: '/order/getOrderPrefills',
+    hasQuery: true,
+  },
+  cancelOrder: {
+    url: '/order/cancelOrder',
+    hasQuery: true,
+  },
+  // Payment Controller
+  paymentDone: {
+    url: '/payment/paymentDone',
+    hasQuery: false,
+  },
 };
 
 /*

@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { AddAddressData } from './add-address/add-address.interface';
 import {
   environment,
@@ -7,6 +9,7 @@ import {
 import {
   AddAddressResponse,
   EmailOtpCheckResponse,
+  GetAddressesData,
   GetAddressesResponse,
   GetAddressResonse,
   GetEmailOtpResponse,
@@ -70,5 +73,11 @@ export class ProfileService {
         otpBody,
       )
       .toPromise();
+  }
+
+  getAddressesSub(): Observable<GetAddressesData> {
+    return this.httpService
+      .get<GetAddressesResponse>(BACKEND_URL + secureAPIURIs.getAddresses.url)
+      .pipe(map((response) => response.data));
   }
 }

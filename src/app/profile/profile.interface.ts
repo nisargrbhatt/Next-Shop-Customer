@@ -50,9 +50,9 @@ export interface GetAddressesResponse {
 export interface GetAddressResonse {
   message: string;
   valid: boolean;
-  data?: AddressData;
   error?: ErrorData;
   dialog?: DialogData;
+  data?: AddressData;
 }
 
 export interface GetUserDetailsResponse {
