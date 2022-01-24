@@ -15,6 +15,13 @@
       (click)="auth0Login()"
       ><mat-icon>login</mat-icon> Login</a
     >
+    <a
+      *ngIf="isAuthenticated"
+      routerLink="order"
+      routerLinkActive="mat-accent"
+      (click)="closeNav()"
+      ><mat-icon> list_alt</mat-icon> Orders</a
+    >
 
     <a
       *ngIf="isAuthenticated"

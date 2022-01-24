@@ -13,6 +13,7 @@ import { ProductCardSmallComponent } from './product/product-card-small/product-
 import { ProductPriceTableComponent } from './product/product-price-table/product-price-table.component';
 import { ProductScrollCardsComponent } from './product/product-scroll-cards/product-scroll-cards.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
+import { OrderCardComponent } from './order/order-card/order-card.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -31,6 +32,7 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     ProductCardSmallComponent,
     ProductPriceTableComponent,
     ProductScrollCardsComponent,
+    OrderCardComponent,
   ],
   providers: [],
   exports: [

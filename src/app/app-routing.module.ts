@@ -18,19 +18,19 @@ const routes: Routes = [
     loadChildren: () => import('./cart/cart.module').then((m) => m.CartModule),
   },
   {
-    path: '',
-    loadChildren: () =>
-      import('./product/product.module').then((m) => m.ProductModule),
-  },
-  {
     path: 'buy',
     loadChildren: () =>
-      import('./payment/payment.module').then((m) => m.PaymentModule),
+    import('./payment/payment.module').then((m) => m.PaymentModule),
   },
   {
     path: 'order',
     loadChildren: () =>
-      import('./order/order.module').then((m) => m.OrderModule),
+    import('./order/order.module').then((m) => m.OrderModule),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./product/product.module').then((m) => m.ProductModule),
   },
   {
     path: '**',

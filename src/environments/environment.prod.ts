@@ -123,6 +123,10 @@ export const secureAPIURIs = {
     url: '/order/cancelOrder',
     hasQuery: true,
   },
+  getAllOrdersByUserId: {
+    url: '/order/getAllOrdersByUserId',
+    hasQuery: true,
+  },
   // Payment Controller
   paymentDone: {
     url: '/payment/paymentDone',
