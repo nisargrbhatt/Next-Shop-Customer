@@ -46,6 +46,7 @@ import { OrderCardComponent } from './order/order-card/order-card.component';
     ProductCardSmallComponent,
     ProductPriceTableComponent,
     ProductScrollCardsComponent,
+    OrderCardComponent,
   ],
 })
 export class SharedModule {}

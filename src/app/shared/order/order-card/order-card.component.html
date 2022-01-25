@@ -1,3 +1,48 @@
-<div class="hero">
-  
+<div class="hero mat-elevation-z8" *ngIf="orderDetails">
+  <div class="hero-image">
+    <img
+      [src]="orderDetails.product.images[0].url"
+      [alt]="orderDetails.product.name"
+    />
+  </div>
+  <div class="hero-details">
+    <div class="product-name">
+      <a [routerLink]="['/', orderDetails.product.slug]">
+        {{ orderDetails.product.name }}
+      </a>
+    </div>
+    <div class="product-quantity">x{{ orderDetails.quantity }}</div>
+    <div class="product-small_description">
+      {{ orderDetails.product.small_description }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="hero-actions">
+      <button
+        mat-raised-button
+        type="button"
+        color="primary"
+        *ngIf="orderDetails.order_status === false"
+        [routerLink]="['/buy/pay/', orderDetails.id]"
+      >
+        Complete Order
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        color="accent"
+        [routerLink]="['/order/', orderDetails.id]"
+      >
+        Show
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        color="warn"
+        *ngIf="orderDetails.order_status === true"
+      >
+        Cancel Order
+      </button>
+    </div>
+  </div>
 </div>
+<mat-spinner *ngIf="!orderDetails"></mat-spinner>

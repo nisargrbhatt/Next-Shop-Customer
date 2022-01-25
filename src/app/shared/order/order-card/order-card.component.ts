@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
 import { OrderCardData } from '../order.interface';
@@ -10,7 +11,7 @@ import { OrderCardData } from '../order.interface';
 export class OrderCardComponent implements OnInit {
   @Input() orderDetails: OrderCardData;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 }
