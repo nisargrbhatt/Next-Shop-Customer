@@ -1,0 +1,79 @@
+<mat-vertical-stepper
+  linear
+  #stepper
+  *ngIf="priceData && productData && addressesData"
+>
+  <mat-step [stepControl]="addressForm">
+    <form [formGroup]="addressForm">
+      <ng-template matStepLabel>Select Your address</ng-template>
+
+      <mat-radio-group formControlName="addressId">
+        <mat-radio-button
+          [value]="address.id"
+          *ngFor="let address of addressesData.rows"
+        >
+          <div class="address-show">
+            <div class="address-name" *ngIf="address.name">
+              Name: {{ address.name }}
+            </div>
+            <div class="address-line1" *ngIf="address.address_line1">
+              Line1: {{ address.address_line1 }}
+            </div>
+            <div class="address-line2" *ngIf="address.address_line2">
+              Line2: {{ address.address_line2 }}
+            </div>
+            <div class="address-city" *ngIf="address.city">
+              City: {{ address.city }}
+            </div>
+            <div class="address-study" *ngIf="address.state">
+              State: {{ address.state }}
+            </div>
+            <div class="address-zipcode" *ngIf="address.zipcode">
+              ZipCode: {{ address.zipcode }}
+            </div>
+            <div class="address-contact" *ngIf="address.contact_no">
+              Contact No: {{ address.contact_no }}
+            </div>
+          </div>
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <div class="address-null" *ngIf="!addressesData.count">
+        No Address Found. <a routerLink="/profile/add-address">Add Address</a>
+      </div>
+
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="productForm">
+    <form [formGroup]="productForm">
+      <ng-template matStepLabel>Product Details</ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input
+          matInput
+          formControlName="quantity"
+          placeholder="Product Quantity"
+          type="number"
+          min="1"
+          max="5"
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Place Order</ng-template>
+
+    <div>
+      <button mat-raised-button (click)="buyNow()" type="button">
+        Place Order
+      </button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

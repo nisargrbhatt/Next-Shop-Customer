@@ -1,0 +1,116 @@
+<div class="hero mat-elevation-z8" *ngIf="orderDetails">
+  <div class="hero-image">
+    <img
+      [src]="orderDetails.product.images[0].url"
+      [alt]="orderDetails.product.name"
+    />
+  </div>
+  <div class="hero-details">
+    <!-- Product Details -->
+    <div class="product-name">
+      <a [routerLink]="['/', orderDetails.product.slug]">
+        {{ orderDetails.product.name }}
+      </a>
+    </div>
+    <div class="product-quantity">x{{ orderDetails.quantity }}</div>
+    <div class="product-amount">
+      {{ orderDetails.amount / 100 | currency: 'INR' }}
+    </div>
+    <div class="product-small_description">
+      {{ orderDetails.product.small_description }}
+    </div>
+    <!--------------------->
+    <mat-divider></mat-divider>
+    <!-- Refund Details -->
+    <div
+      class="product-refund"
+      *ngIf="
+        orderDetails.order_status === true &&
+        orderDetails.refund_status === true
+      "
+    >
+      <h3>Refund Details</h3>
+      <p>Refund Id: {{ orderDetails.rp_refund_id }}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Delivery Details -->
+    <div class="product-delivery" *ngIf="orderDetails.order_decision === true">
+      <p *ngIf="orderDetails.delivery_status === false">
+        Package is on way 🚚🚚🚚
+      </p>
+      <p *ngIf="orderDetails.delivery_status === true">
+        Package is delivered 🎉🎉🎉
+      </p>
+    </div>
+    <!--------------------->
+    <mat-divider></mat-divider>
+    <!-- Merchant Details -->
+    <div
+      class="product-merchant-status"
+      *ngIf="
+        orderDetails.order_status === true &&
+        orderDetails.order_cancel === false
+      "
+    >
+      <p *ngIf="orderDetails.order_decision_status === false">
+        Merchant approval pending ⏲⏲⏲
+      </p>
+      <p
+        *ngIf="
+          orderDetails.order_decision_status === true &&
+          orderDetails.order_decision === true
+        "
+      >
+        Merchant accepted the order 🆗🆗🆗
+      </p>
+      <p
+        *ngIf="
+          orderDetails.order_decision_status === true &&
+          orderDetails.order_decision === false
+        "
+      >
+        Merchant rejected the order 😢😢😢
+      </p>
+    </div>
+    <!--------------------->
+    <mat-divider></mat-divider>
+    <!-- Actions -->
+    <div class="hero-actions">
+      <div class="hero-action-1">
+        <button
+          mat-raised-button
+          type="button"
+          color="accent"
+          [routerLink]="['/order/', orderDetails.id]"
+        >
+          Show
+        </button>
+      </div>
+      <div class="hero-action-2" *ngIf="orderDetails.order_cancel === false">
+        <button
+          mat-raised-button
+          type="button"
+          color="primary"
+          *ngIf="orderDetails.order_status === false"
+          [routerLink]="['/buy/pay/', orderDetails.id]"
+        >
+          Complete Order
+        </button>
+        <button
+          mat-raised-button
+          type="button"
+          color="warn"
+          *ngIf="orderDetails.order_status === true"
+        >
+          Cancel Order
+        </button>
+      </div>
+      <div
+        class="hero-action-3"
+        *ngIf="orderDetails.order_cancel === true"
+      ></div>
+    </div>
+    <!--------------------->
+  </div>
+</div>
+<mat-spinner *ngIf="!orderDetails"></mat-spinner>

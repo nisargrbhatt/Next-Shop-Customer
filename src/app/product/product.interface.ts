@@ -107,11 +107,11 @@ export interface FullProductData {
   userId: string;
   createdAt: string;
   updatedAt: string;
-  category: CategoryData;
-  prices: PriceData[];
-  reviewes: ReviewData[];
-  user: UserData;
-  images: ImageData[];
+  category?: CategoryData;
+  prices?: PriceData[];
+  reviewes?: ReviewData[];
+  user?: UserData;
+  images?: ImageData[];
 }
 
 export interface CategoryData {
