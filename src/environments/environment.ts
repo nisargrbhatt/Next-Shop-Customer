@@ -131,6 +131,14 @@ export const secureAPIURIs = {
     url: '/order/getAllOrdersByUserId',
     hasQuery: true,
   },
+  orderDecisionByMerchant: {
+    url: '/order/orderDecisionByMerchant',
+    hasQuery: false,
+  },
+  getAllMerchantDecisionPendingOrder: {
+    url: '/order/getAllMerchantDecisionPendingOrder',
+    hasQuery: true,
+  },
   // Payment Controller
   paymentDone: {
     url: '/payment/paymentDone',

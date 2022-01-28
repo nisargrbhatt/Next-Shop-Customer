@@ -28,6 +28,13 @@ export interface GetAllOrdersByUserIdResponseDataRows {
   order_status: boolean;
   quantity: number;
   rp_prefill_data: string;
+  order_decision_status?: boolean;
+  order_decision?: boolean;
+  delivery_status?: boolean;
+  order_cancel?: boolean;
+  refund_status?: boolean;
+  rp_refund_id?: string;
+  amount: number;
   userId: string;
   addressId: string;
   productId: string;

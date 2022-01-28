@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
-import { OrderCardData } from '../order.interface';
+import { GetAllOrdersByUserIdResponseDataRows } from 'src/app/order/order.interface';
 
 @Component({
   selector: 'app-order-card',
@@ -9,7 +9,7 @@ import { OrderCardData } from '../order.interface';
   styleUrls: ['./order-card.component.scss'],
 })
 export class OrderCardComponent implements OnInit {
-  @Input() orderDetails: OrderCardData;
+  @Input() orderDetails: GetAllOrdersByUserIdResponseDataRows;
 
   constructor(private router: Router) {}
 
