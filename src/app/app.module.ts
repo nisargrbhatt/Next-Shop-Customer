@@ -55,13 +55,17 @@ import { HttpErrorInterceptor } from './http-error.interceptor';
         //   },
 
         // ],
-        allowedList: Object.values(secureAPIURIs).map((uri) => {
-          let url = environment.backend_url + uri.url;
-          if (uri.hasQuery) {
-            url += '/*';
-          }
-          return url;
-        }),
+        allowedList: [
+          ...Object.values(secureAPIURIs).map((uri) => {
+            let url = environment.backend_url + uri.url;
+            if (uri.hasQuery) {
+              url += '/*';
+            }
+            return url;
+          }),
+          environment.backend_model_url + secureAPIURIs.addActivity,
+          environment.backend_model_url + secureAPIURIs.getRecommendedProducts,
+        ],
         // allowedList: ['http://localhost:3001/user/oAuthCall'],
       },
     }),

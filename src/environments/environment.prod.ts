@@ -2,6 +2,7 @@ export const environment = {
   production: true,
   backend_url: 'https://next-shop-backend.herokuapp.com',
   backend_url_secure: 'https://next-shop-backend.herokuapp.com',
+  backend_model_url: 'https://next-shop-model.herokuapp.com',
   debug: false,
   auth0ClientId: 'e4hJ28GiU2FLepiHrMcS2drHWOSX9F5P',
   auth0Audience: 'http://localhost:3001',
@@ -135,9 +136,55 @@ export const secureAPIURIs = {
     url: '/order/getAllMerchantDecisionPendingOrder',
     hasQuery: true,
   },
+  getAllMerchantDecisionAcceptedOrder: {
+    url: '/order/getAllMerchantDecisionAcceptedOrder',
+    hasQuery: true,
+  },
+  getAllMerchantDecisionRejectedOrder: {
+    url: '/order/getAllMerchantDecisionRejectedOrder',
+    hasQuery: true,
+  },
+  getOrder: {
+    url: '/order/getOrder',
+    hasQuery: true,
+  },
   // Payment Controller
   paymentDone: {
     url: '/payment/paymentDone',
+    hasQuery: false,
+  },
+  // Transaction Controller
+  getAllRazorpayCustomer: {
+    url: '/transaction/getAllRazorpayCustomer',
+    hasQuery: true,
+  },
+  getAllRazorpayOrder: {
+    url: '/transaction/getAllRazorpayOrder',
+    hasQuery: true,
+  },
+  getAllRazorpayPayment: {
+    url: '/transaction/getAllRazorpayPayment',
+    hasQuery: true,
+  },
+  getRazorpayOrder: {
+    url: '/transaction/getRazorpayOrder',
+    hasQuery: true,
+  },
+  getRazorpayPayment: {
+    url: '/transaction/getRazorpayPayment',
+    hasQuery: true,
+  },
+  getRazorpayCustomer: {
+    url: '/transaction/getRazorpayCustomer',
+    hasQuery: true,
+  },
+  // Activity Controller
+  addActivity: {
+    url: '/activity/addActivity',
+    hasQuery: false,
+  },
+  getRecommendedProducts: {
+    url: '/activity/getRecommendedProducts',
     hasQuery: false,
   },
 };

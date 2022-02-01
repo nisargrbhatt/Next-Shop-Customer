@@ -1,10 +1,11 @@
 import { GetAllOrdersByUserIdResponseData } from './../order.interface';
-import { distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 import { OrderService } from './../order.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
+import { PaymentService } from 'src/app/payment/payment.service';
 
 @Component({
   selector: 'app-order-list',
@@ -23,12 +24,15 @@ export class OrderListComponent implements OnInit, OnDestroy {
 
   orderData: GetAllOrdersByUserIdResponseData;
 
-  constructor(private orderService: OrderService) {}
+  constructor(
+    private orderService: OrderService,
+    private paymentService: PaymentService,
+  ) {}
 
   ngOnInit(): void {
     this.subs.sink = this.currentPage$
       .pipe(
-        distinctUntilChanged(),
+        debounceTime(200),
         switchMap((currentPage) =>
           this.orderService.getAllOrdersByUserId(currentPage, this.pageSize),
         ),
@@ -41,6 +45,16 @@ export class OrderListComponent implements OnInit, OnDestroy {
 
   onPageChange(pageData: PageEvent): void {
     this.currentPage.next(pageData.pageIndex + 1);
+  }
+
+  onRefresh(): void {
+    this.currentPage.next(1);
+  }
+
+  onCancelOrder(orderId: string): void {
+    this.paymentService.cancelOrder(orderId).subscribe((_) => {
+      this.onRefresh();
+    });
   }
 
   ngOnDestroy(): void {

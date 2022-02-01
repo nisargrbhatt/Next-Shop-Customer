@@ -29,12 +29,19 @@
         orderDetails.refund_status === true
       "
     >
-      <h3>Refund Details</h3>
+      <h3>Refund Details:</h3>
       <p>Refund Id: {{ orderDetails.rp_refund_id }}</p>
+      <p>Refund will be processed in 5-7 days</p>
     </div>
     <mat-divider></mat-divider>
     <!-- Delivery Details -->
-    <div class="product-delivery" *ngIf="orderDetails.order_decision === true">
+    <div
+      class="product-delivery"
+      *ngIf="
+        orderDetails.order_decision === true &&
+        orderDetails.order_cancel === false
+      "
+    >
       <p *ngIf="orderDetails.delivery_status === false">
         Package is on way 🚚🚚🚚
       </p>
@@ -76,16 +83,6 @@
     <mat-divider></mat-divider>
     <!-- Actions -->
     <div class="hero-actions">
-      <div class="hero-action-1">
-        <button
-          mat-raised-button
-          type="button"
-          color="accent"
-          [routerLink]="['/order/', orderDetails.id]"
-        >
-          Show
-        </button>
-      </div>
       <div class="hero-action-2" *ngIf="orderDetails.order_cancel === false">
         <button
           mat-raised-button
@@ -100,7 +97,11 @@
           mat-raised-button
           type="button"
           color="warn"
-          *ngIf="orderDetails.order_status === true"
+          *ngIf="
+            orderDetails.order_status === true &&
+            orderDetails.delivery_status === false
+          "
+          (click)="onCancelOrder(orderDetails.id)"
         >
           Cancel Order
         </button>
