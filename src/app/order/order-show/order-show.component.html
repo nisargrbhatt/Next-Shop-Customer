@@ -1,0 +1,152 @@
+<div class="hero" *ngIf="orderData">
+  <div class="hero-image">
+    <img
+      [src]="orderData.product.images[0].url"
+      [alt]="orderData.product.name"
+    />
+  </div>
+  <div class="hero-details">
+    <!-- Product Details -->
+    <div class="product-name">
+      <a [routerLink]="['/', orderData.product.slug]">
+        {{ orderData.product.name }}
+      </a>
+    </div>
+    <div class="product-quantity">x{{ orderData.quantity }}</div>
+    <div class="product-amount">
+      {{ orderData.amount / 100 | currency: 'INR' }}
+    </div>
+    <div class="product-small_description">
+      {{ orderData.product.small_description }}
+    </div>
+    <!--------------------->
+    <mat-divider></mat-divider>
+    <!-- Refund Details -->
+    <div
+      class="product-refund"
+      *ngIf="
+        orderData.order_status === true && orderData.refund_status === true
+      "
+    >
+      <h3>Refund Details:</h3>
+      <p>Refund Id: {{ orderData.rp_refund_id }}</p>
+      <p>Refund will be processed in 5-7 days</p>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Delivery Details -->
+    <div
+      class="product-delivery"
+      *ngIf="
+        orderData.order_decision === true && orderData.order_cancel === false
+      "
+    >
+      <p *ngIf="orderData.delivery_status === false">
+        Package is on way 🚚🚚🚚
+      </p>
+      <p *ngIf="orderData.delivery_status === true">
+        Package is delivered 🎉🎉🎉
+      </p>
+    </div>
+    <!--------------------->
+    <mat-divider></mat-divider>
+    <!-- Merchant Details -->
+    <div
+      class="product-merchant-status"
+      *ngIf="
+        orderData.order_status === true && orderData.order_cancel === false
+      "
+    >
+      <p *ngIf="orderData.order_decision_status === false">
+        Merchant approval pending ⏲⏲⏲
+      </p>
+      <p
+        *ngIf="
+          orderData.order_decision_status === true &&
+          orderData.order_decision === true
+        "
+      >
+        Merchant accepted the order 🆗🆗🆗
+      </p>
+      <p
+        *ngIf="
+          orderData.order_decision_status === true &&
+          orderData.order_decision === false
+        "
+      >
+        Merchant rejected the order 😢😢😢
+      </p>
+    </div>
+    <!--------------------->
+    <mat-divider></mat-divider>
+    <!-- Actions -->
+    <div class="hero-actions">
+      <div class="hero-action-2" *ngIf="orderData.order_cancel === false">
+        <button
+          mat-raised-button
+          type="button"
+          color="primary"
+          *ngIf="orderData.order_status === false"
+          [routerLink]="['/buy/pay/', orderData.id]"
+        >
+          Complete Order
+        </button>
+        <button
+          mat-raised-button
+          type="button"
+          color="warn"
+          *ngIf="
+            orderData.order_status === true &&
+            orderData.delivery_status === false
+          "
+          (click)="onCancelOrder(orderData.id)"
+        >
+          Cancel Order
+        </button>
+      </div>
+      <div class="hero-action-3" *ngIf="orderData.order_cancel === true"></div>
+    </div>
+    <!--------------------->
+    <div
+      class="hero-review"
+      *ngIf="
+        orderData.order_status === true &&
+        orderData.order_cancel === false &&
+        orderData.order_decision === true
+      "
+    >
+      <form
+        [formGroup]="reviewForm"
+        (submit)="reviewFound ? onUpdate() : onSubmit()"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea
+            matInput
+            name="message"
+            rows="10"
+            cols="50"
+            formControlName="message"
+            placeholder="Write your review..."
+          ></textarea>
+        </mat-form-field>
+
+        <mat-radio-group formControlName="stars" aria-placeholder="Stars">
+          <mat-radio-button value="1">1</mat-radio-button>
+          <mat-radio-button value="2">2</mat-radio-button>
+          <mat-radio-button value="3">3</mat-radio-button>
+          <mat-radio-button value="4">4</mat-radio-button>
+          <mat-radio-button value="5">5</mat-radio-button>
+        </mat-radio-group>
+
+        <button
+          mat-raised-button
+          [disabled]="reviewForm.invalid"
+          color="primary"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-loader *ngIf="!orderData"></app-loader>

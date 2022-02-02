@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
-import { Auth0ProfileData } from 'src/app/auth/auth.interface';
 
 @Component({
   selector: 'app-product-show',
@@ -86,6 +85,17 @@ export class ProductShowComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (this.isAuthenticated && this.productDetails) {
+      const ttl = Math.round(window.performance.now() / 1000);
+      this.productService
+        .addActivity({
+          productId: this.productDetails.id,
+          isBounce: ttl < 10,
+          isHit: ttl >= 10,
+          timeToLive: ttl,
+        })
+        .subscribe((_) => {});
+    }
     this.subs.unsubscribe();
   }
 }

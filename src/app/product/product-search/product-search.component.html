@@ -14,6 +14,7 @@
               actionName="Open"
               actionIcon="open_in_full"
               (actionClick)="onProductClick($event)"
+              [review]="getReviewStar(product)"
             ></app-product-card-small>
           </div>
         </div>

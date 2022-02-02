@@ -24,6 +24,18 @@
           </div>
         </div>
       </div>
+      <div class="categories" *ngIf="recommendedData">
+        <div class="category">
+          <div class="category-bar">
+            <div class="category-name">Recommended to you</div>
+          </div>
+          <div class="category-products">
+            <app-product-scroll-cards
+              [productsDetails]="recommendedData.rows"
+            ></app-product-scroll-cards>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

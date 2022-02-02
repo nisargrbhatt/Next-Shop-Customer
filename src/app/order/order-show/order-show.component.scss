@@ -1,0 +1,114 @@
+.hero {
+  margin: 1rem;
+}
+
+.hero-image {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  img {
+    width: 25rem;
+    height: 25rem;
+    object-fit: contain;
+  }
+}
+
+.hero-actions {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.product-name {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  font-family: 'Fira Code' monospace;
+  font-size: 1.2rem;
+  font-weight: 500;
+  a {
+    color: black;
+  }
+}
+.product-quantity {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  font-family: 'Fira Code' monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  color: gray;
+}
+.product-amount {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  font-family: 'Fira Code' monospace;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: black;
+}
+.product-small_description {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  font-family: 'Fira Code' monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  color: gray;
+}
+.product-refund {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  font-family: 'Fira Code' monospace;
+  font-weight: 500;
+  color: black;
+  p {
+    font-size: 0.9rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+}
+.product-delivery {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  font-family: 'Fira Code' monospace;
+  font-weight: 500;
+  color: black;
+  p {
+    font-size: 0.9rem;
+  }
+}
+.product-merchant-status {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  font-family: 'Fira Code' monospace;
+  font-weight: 500;
+  color: black;
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+.hero-review {
+  display: flex;
+  justify-content: center;
+  form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    mat-form-field {
+      width: 100%;
+    }
+    mat-radio-group {
+      width: 100%;
+      mat-radio-button {
+        margin: 0.25rem;
+      }
+    }
+    button {
+      margin-top: 1rem;
+    }
+  }
+}

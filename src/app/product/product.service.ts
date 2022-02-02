@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import {
+  AddActivityData,
+  AddActivityResponse,
   FullProductData,
   GetAllProductLookaheadWithCategoryImageBySearchResponse,
   GetAllProductLookaheadWithCategoryImageBySearchResponseData,
@@ -14,6 +16,8 @@ import {
   GetAllProductWithCategoryImageByCategoryIdResponseData,
   GetAllProductWithCategoryImageBySearchResponse,
   GetProductWithCategoryPriceReviewManufacturerResponse,
+  GetRecommendedProductsResponse,
+  GetRecommendedProductsResponseData,
 } from './product.interface';
 
 import {
@@ -30,6 +34,8 @@ import {
 const BACKEND_URL = environment.production
   ? environment.backend_url_secure
   : environment.backend_url;
+
+const MODEL_BACKEND_URL = environment.backend_model_url;
 
 @Injectable({
   providedIn: 'root',
@@ -105,6 +111,23 @@ export class ProductService {
         BACKEND_URL +
           basicAPIURIs.getProductWithCategory +
           `/?productId=${productId}`,
+      )
+      .pipe(map((response) => response.data));
+  }
+
+  addActivity(
+    addActivityData: AddActivityData,
+  ): Observable<AddActivityResponse> {
+    return this.httpService.post<AddActivityResponse>(
+      MODEL_BACKEND_URL + secureAPIURIs.addActivity.url,
+      addActivityData,
+    );
+  }
+
+  getRecommendedProducts(): Observable<GetRecommendedProductsResponseData> {
+    return this.httpService
+      .get<GetRecommendedProductsResponse>(
+        MODEL_BACKEND_URL + secureAPIURIs.getRecommendedProducts.url,
       )
       .pipe(map((response) => response.data));
   }
