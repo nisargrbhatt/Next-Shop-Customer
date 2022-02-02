@@ -6,9 +6,10 @@ import { CommonModule } from '@angular/common';
 import { OrderRoutingModule } from './order-routing.module';
 import { RouterModule } from '@angular/router';
 import { OrderListComponent } from './order-list/order-list.component';
+import { OrderShowComponent } from './order-show/order-show.component';
 
 @NgModule({
-  declarations: [OrderListComponent],
+  declarations: [OrderListComponent, OrderShowComponent],
   imports: [
     CommonModule,
     OrderRoutingModule,

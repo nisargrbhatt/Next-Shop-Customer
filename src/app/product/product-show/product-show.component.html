@@ -87,13 +87,9 @@
         class="product-review"
         *ngFor="let review of productDetails.reviewes"
       >
-        <div class="review-name">
-          {{ review.user.name }}
-        </div>
+        <div class="review-name">Name: {{ review.user.name }}</div>
         <mat-divider></mat-divider>
-        <div class="review-message">
-          {{ review.message }}
-        </div>
+        <div class="review-message">Review: {{ review.message }}</div>
       </div>
       <div class="review-null-text" *ngIf="!productDetails.reviewes.length">
         No Reviews found

@@ -58,6 +58,7 @@ export interface ProductData {
   updatedAt: string;
   images?: Image[];
   category?: Category;
+  reviewes?: ReviewData[];
 }
 
 export interface Category {
@@ -155,5 +156,64 @@ export interface ReviewData {
   stars: number;
   userId: string;
   productId: string;
-  user: UserData;
+  user?: UserData;
+}
+
+export interface AddActivityData {
+  timeToLive?: number;
+  isHit?: boolean;
+  isBounce?: boolean;
+  productId: string;
+}
+
+export interface AddActivityResponse {
+  message: string;
+  valid: boolean;
+  error?: ErrorData;
+  dialog?: DialogData;
+}
+
+export interface GetRecommendedProductsResponse {
+  message: string;
+  valid: boolean;
+  error?: ErrorData;
+  dialog?: DialogData;
+  data?: GetRecommendedProductsResponseData;
+}
+
+export interface GetRecommendedProductsResponseData {
+  count: number;
+  rows: Product[];
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  small_description: string;
+  specification: string;
+  slug: string;
+  categoryId: string;
+  userId: string;
+  createdAt: string;
+  updatedAt: string;
+  images: Image[];
+  category?: CategoryData;
+}
+
+export interface Image {
+  id: string;
+  name: string;
+  url: string;
+  productId: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CategoryData {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  products?: Product[];
 }

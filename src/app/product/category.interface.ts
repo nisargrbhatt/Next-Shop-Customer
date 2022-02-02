@@ -1,3 +1,5 @@
+import { ReviewData } from './product.interface';
+
 export interface ErrorData {
   code: string;
   message: string;
@@ -33,6 +35,7 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
   images: Image[];
+  reviewes?: ReviewData[];
   category?: CategoryData;
 }
 

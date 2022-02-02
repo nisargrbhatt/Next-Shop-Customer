@@ -9,6 +9,7 @@
       actionName="Open"
       actionIcon="open_in_full"
       (actionClick)="cardClick($event)"
+      [review]="getReviewStar(product)"
     ></app-product-card-small>
   </div>
 </drag-scroll>

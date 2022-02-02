@@ -63,8 +63,9 @@ import { HttpErrorInterceptor } from './http-error.interceptor';
             }
             return url;
           }),
-          environment.backend_model_url + secureAPIURIs.addActivity,
-          environment.backend_model_url + secureAPIURIs.getRecommendedProducts,
+          environment.backend_model_url + secureAPIURIs.addActivity.url,
+          environment.backend_model_url +
+            secureAPIURIs.getRecommendedProducts.url,
         ],
         // allowedList: ['http://localhost:3001/user/oAuthCall'],
       },

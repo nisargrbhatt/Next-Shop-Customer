@@ -284,11 +284,18 @@
 }
 
 .product-reviewes-value {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   margin-top: 1rem;
   .product-review {
+    width: 60%;
     margin: 0.5rem;
     border: solid gray 1px;
     border-radius: 1rem;
+    padding: 0.25rem;
 
     .review-name {
       font-family: 'Fira Code' monospace;

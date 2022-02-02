@@ -12,6 +12,7 @@ export class ProductCardSmallComponent implements OnInit {
   @Input() cardWidth: number;
   @Input() actionName: string;
   @Input() actionIcon: string;
+  @Input() review: [number, number];
   @Output() actionClick: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {}
