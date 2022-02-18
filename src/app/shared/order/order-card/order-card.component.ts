@@ -1,5 +1,4 @@
-import { Router } from '@angular/router';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { GetAllOrdersByUserIdResponseDataRows } from 'src/app/order/order.interface';
 
@@ -8,13 +7,11 @@ import { GetAllOrdersByUserIdResponseDataRows } from 'src/app/order/order.interf
   templateUrl: './order-card.component.html',
   styleUrls: ['./order-card.component.scss'],
 })
-export class OrderCardComponent implements OnInit {
+export class OrderCardComponent {
   @Input() orderDetails: GetAllOrdersByUserIdResponseDataRows;
   @Output() cancelOrder: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {}
+  constructor() {}
 
   onCancelOrder(orderId: string): void {
     this.cancelOrder.emit(orderId);
