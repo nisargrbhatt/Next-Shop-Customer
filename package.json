@@ -29,7 +29,6 @@
     "@ngneat/tailwind": "^7.0.3",
     "ngx-drag-scroll": "^12.0.0-beta.2",
     "ngx-infinite-scroll": "^10.0.1",
-    "ngx-viewer": "^1.0.8",
     "rxjs": "~7.5.4",
     "subsink": "^1.0.2",
     "tslib": "^2.3.1",
