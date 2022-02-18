@@ -103,7 +103,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
 
     this.subs.sink = this.router.events
-      .pipe(filter((event: RouterEvent) => event instanceof NavigationEnd))
+      .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe((event: RouterEvent) => {
         if (event.url.startsWith('/search/')) {
           // if (event.url.split('/')[2]) {
