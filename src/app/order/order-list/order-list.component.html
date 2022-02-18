@@ -1,4 +1,4 @@
-<div class="hero" *ngIf="orderData">
+<!-- <div class="hero" *ngIf="orderData">
   <div class="hero-orders">
     <mat-accordion multi="true">
       <div class="order-list" *ngFor="let order of orderData.rows">
@@ -15,5 +15,25 @@
       (page)="onPageChange($event)"
     ></mat-paginator>
   </div>
-  <app-loader *ngIf="!orderData"></app-loader>
-</div>
+</div> -->
+<app-loader *ngIf="!orderData"></app-loader>
+<mat-accordion multi="true" *ngIf="orderData">
+  <mat-grid-list
+    [cols]="mybreakpoint"
+    rowHeight="450px"
+    (window:resize)="handleSize($event)"
+  >
+    <mat-grid-tile *ngFor="let order of orderData.rows">
+      <app-order-card
+        [orderDetails]="order"
+        (cancelOrder)="onCancelOrder($event)"
+      ></app-order-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-accordion>
+<mat-paginator
+  *ngIf="orderData?.count"
+  [length]="orderData.count"
+  [pageSize]="pageSize"
+  (page)="onPageChange($event)"
+></mat-paginator>

@@ -1,5 +1,5 @@
-<div
-  class="hero"
+<!-- <div
+  class="hero bg-white"
   [ngStyle]="{ height: cardHeight + 'rem', width: cardWidth + 'rem' }"
 >
   <div class="product-image">
@@ -12,14 +12,14 @@
       [alt]="productDetails.name"
     />
   </div>
-  <div class="product-name">
+  <h1 class="product-name ff-sans-cond text-black fs-600">
     {{ productDetails.name | titlecase }}
-  </div>
-  <div class="product-category">
+  </h1>
+  <h3 class="product-category ff-sans-normal fs-500">
     {{ productDetails.category | titlecase }}
-  </div>
-  <div class="product-ratings">
-    <div class="ratings">
+  </h3>
+  <div class="product-ratings"> -->
+<!-- <div class="ratings">
       <div class="star-yellow" *ngIf="review[0] / 5 >= 1"></div>
       <div class="star-yellow" *ngIf="review[0] / 4 >= 1"></div>
       <div class="star-yellow" *ngIf="review[0] / 3 >= 1"></div>
@@ -30,19 +30,439 @@
       <div class="star-grey" *ngIf="3 - review[0] > 0"></div>
       <div class="star-grey" *ngIf="2 - review[0] > 0"></div>
       <div class="star-grey" *ngIf="1 - review[0] > 0"></div>
-    </div>
-    <div class="reviews">{{ review[1] }} Reviews</div>
+    </div> -->
+
+<!-- <svg
+      id="emoji"
+      viewBox="0 0 72 72"
+      xmlns="http://www.w3.org/2000/svg"
+      *ngIf="review[0] === 5"
+    >
+      <g id="color">
+        <circle cx="36" cy="36" r="23" fill="#FCEA2B" />
+        <path
+          fill="#D22F27"
+          d="M26.4992,27.4384c-1.2653-3.3541-6.441-3.5687-6.1168,1.3178c0.0431,0.6485,0.281,1.2724,0.6414,1.8135 l5.3179,6.4224l0,0l5.2212-6.266c0.5796-0.6964,0.9224-1.5779,0.905-2.4853c-0.0863-4.3523-5.0509-4.0351-6.1274-0.8036"
+        />
+        <path
+          fill="#D22F27"
+          d="M45.8012,27.4384c-1.2547-3.3541-6.3873-3.5687-6.0658,1.3178c0.0428,0.6485,0.2787,1.2724,0.6361,1.8135 l5.2737,6.4224l0,0l5.1777-6.266c0.5747-0.6964,0.9147-1.5779,0.8974-2.4853c-0.0856-4.3523-5.0089-4.0351-6.0763-0.8036"
+        />
+        <path
+          fill="#FFFFFF"
+          d="M48.5859,42.6735c0,5.6296-4.1784,10.1046-12.5541,10.1046c-8.3738,0-12.6069-4.4888-12.6069-10.1047 C23.4249,42.6734,36.4503,45.7045,48.5859,42.6735z"
+        />
+      </g>
+      <g id="hair" />
+      <g id="skin" />
+      <g id="skin-shadow" />
+      <g id="line">
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M48.1113,44.5467"
+        />
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M23.934,44.5467"
+        />
+        <circle
+          cx="36"
+          cy="36"
+          r="23"
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+        />
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M48.5859,42.6735c0,5.6296-4.1784,10.1046-12.5541,10.1046c-8.3738,0-12.6069-4.4888-12.6069-10.1047 C23.4249,42.6734,36.4503,45.7045,48.5859,42.6735z"
+        />
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M26.4992,27.4384c-1.2653-3.3541-6.441-3.5687-6.1168,1.3178c0.0431,0.6485,0.281,1.2724,0.6414,1.8135l5.3179,6.4224l0,0 l5.2212-6.266c0.5796-0.6964,0.9224-1.5779,0.905-2.4853c-0.0863-4.3523-5.0509-4.0351-6.1274-0.8036"
+        />
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M45.8012,27.4384c-1.2547-3.3541-6.3873-3.5687-6.0658,1.3178c0.0428,0.6485,0.2787,1.2724,0.6361,1.8135l5.2737,6.4224l0,0 l5.1777-6.266c0.5747-0.6964,0.9147-1.5779,0.8974-2.4853c-0.0856-4.3523-5.0089-4.0351-6.0763-0.8036"
+        />
+      </g>
+    </svg>
+
+    <svg
+      id="emoji"
+      viewBox="0 0 72 72"
+      xmlns="http://www.w3.org/2000/svg"
+      *ngIf="review[0] === 4"
+    >
+      <g id="color">
+        <circle cx="36" cy="36" r="23" fill="#fcea2b" />
+        <path
+          fill="#fff"
+          d="M50.595,41.64a11.5554,11.5554,0,0,1-.87,4.49c-12.49,3.03-25.43.34-27.49-.13a11.4347,11.4347,0,0,1-.83-4.36h.11s14.8,3.59,28.89.07Z"
+        />
+        <path
+          fill="#ea5a47"
+          d="M49.7251,46.13c-1.79,4.27-6.35,7.23-13.69,7.23-7.41,0-12.03-3.03-13.8-7.36C24.2951,46.47,37.235,49.16,49.7251,46.13Z"
+        />
+      </g>
+      <g id="hair" />
+      <g id="skin" />
+      <g id="skin-shadow" />
+      <g id="line">
+        <circle
+          cx="36"
+          cy="36"
+          r="23"
+          fill="none"
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M50.595,41.64a11.5554,11.5554,0,0,1-.87,4.49c-12.49,3.03-25.43.34-27.49-.13a11.4347,11.4347,0,0,1-.83-4.36h.11s14.8,3.59,28.89.07Z"
+        />
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M49.7251,46.13c-1.79,4.27-6.35,7.23-13.69,7.23-7.41,0-12.03-3.03-13.8-7.36C24.2951,46.47,37.235,49.16,49.7251,46.13Z"
+        />
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M31.6941,32.4036a4.7262,4.7262,0,0,0-8.6382,0"
+        />
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M48.9441,32.4036a4.7262,4.7262,0,0,0-8.6382,0"
+        />
+      </g>
+    </svg>
+
+    <svg
+      id="emoji"
+      viewBox="0 0 72 72"
+      xmlns="http://www.w3.org/2000/svg"
+      *ngIf="review[0] === 3"
+    >
+      <g id="color">
+        <path
+          fill="#fcea2b"
+          d="M12.2856,36a24,24,0,1,0,24-24A24.0272,24.0272,0,0,0,12.2856,36Z"
+        />
+        <path
+          fill="#92d3f5"
+          d="M19.683,55.2042c-.165,0-.33-.0069-.4951-.02a6.0679,6.0679,0,0,1-5.5606-6.52c.3887-4.8672,5.2237-9.0215,5.4288-9.1963a1.9057,1.9057,0,0,1,1.42-.459,1.9411,1.9411,0,0,1,1.331.6788c.4405.52,4.28,5.1943,3.9024,9.9355A6.02,6.02,0,0,1,23.6,53.7559h0A6.0065,6.0065,0,0,1,19.683,55.2042Z"
+        />
+      </g>
+      <g id="line">
+        <path
+          d="M48.2846,35.1737a3,3,0,1,1-3-3A3.0011,3.0011,0,0,1,48.2846,35.1737Z"
+        />
+        <path
+          d="M30.2846,35.1737a3,3,0,1,1-3-3A3.0011,3.0011,0,0,1,30.2846,35.1737Z"
+        />
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M25.4512,56.2934a22.9635,22.9635,0,1,0-11.3767-14.299"
+        />
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M22.9511,52.9953a5.0262,5.0262,0,0,0,1.7615-3.45c.3532-4.4362-3.5025-9.0145-3.6667-9.2071a.9522.9522,0,0,0-1.3428-.1068c-.1929.1645-4.7241,4.0753-5.0783,8.5123l0,0a5.0608,5.0608,0,0,0,8.3267,4.2513Z"
+        />
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M42.7856,46a12.4489,12.4489,0,0,0-6.8422-1.8532A10.3886,10.3886,0,0,0,29.7856,46"
+        />
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M51.4223,26.2978a7.4028,7.4028,0,0,1-5.3048-.3243,7.4,7.4,0,0,1-4.11-3.4111"
+        />
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21.1854,26.2871a8.44,8.44,0,0,0,9.413-3.7176"
+        />
+      </g>
+    </svg>
+
+    <svg
+      id="emoji"
+      viewBox="0 0 72 72"
+      xmlns="http://www.w3.org/2000/svg"
+      *ngIf="review[0] === 2"
+    >
+      <g id="color">
+        <path
+          fill="#FCEA2B"
+          d="M36.2002,13.3163c-12.5719,0-22.7998,10.2279-22.7998,22.7998c0,12.5718,10.2279,22.7998,22.7998,22.7998 C48.772,58.9159,59,48.6879,59,36.1161C59,23.5442,48.772,13.3163,36.2002,13.3163z"
+        />
+        <path
+          fill="#92D3F5"
+          d="M22.7747,33.8245c-1.0767,1.1019-3.115,3.4878-3.2924,5.9164c-0.1111,1.521,1.1185,2.9431,2.6365,3.0534 c1.5693,0.1143,2.9388-1.0681,3.0546-2.6364l0,0C25.3503,37.7287,23.6798,35.0718,22.7747,33.8245z"
+        />
+      </g>
+      <g id="hair" />
+      <g id="skin" />
+      <g id="skin-shadow" />
+      <g id="line">
+        <circle
+          cx="36"
+          cy="36"
+          r="23"
+          fill="none"
+          stroke="#000000"
+          stroke-miterlimit="10"
+          stroke-width="2"
+        />
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M26.5,48c1.8768-3.8326,5.8239-6.1965,10-6c3.8343,0.1804,7.2926,2.4926,9,6"
+        />
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M20.3869,41.6299 c-0.5326-0.5326-0.8258-1.2405-0.8256-1.9936c0-2.4789,2.3433-4.8508,2.443-4.9505c0.2074-0.2074,0.5431-0.2072,0.7503,0 c0.0998,0.0998,2.4432,2.4718,2.4437,4.9512l0.0002,0.0002c-0.0007,1.5535-1.2653,2.8177-2.8189,2.8175 C21.6273,42.4556,20.9195,42.1624,20.3869,41.6299z"
+        />
+        <path
+          d="M30,31c0,1.6568-1.3448,3-3,3c-1.6553,0-3-1.3433-3-3c0-1.6552,1.3447-3,3-3C28.6552,28,30,29.3448,30,31"
+        />
+        <path
+          d="M48,31c0,1.6568-1.3447,3-3,3s-3-1.3433-3-3c0-1.6552,1.3447-3,3-3S48,29.3448,48,31"
+        />
+      </g>
+    </svg>
+
+    <svg
+      id="emoji"
+      viewBox="0 0 72 72"
+      xmlns="http://www.w3.org/2000/svg"
+      *ngIf="review[0] === 1"
+    >
+      <g id="color">
+        <path
+          fill="#FCEA2B"
+          d="M36,13c-12.6823,0-23,10.3177-23,23c0,12.6822,10.3177,23,23,23c12.6822,0,23-10.3178,23-23 C59,23.3177,48.6822,13,36,13z"
+        />
+      </g>
+      <g id="hair" />
+      <g id="skin" />
+      <g id="skin-shadow" />
+      <g id="line">
+        <circle
+          cx="36"
+          cy="36"
+          r="23"
+          fill="none"
+          stroke="#000000"
+          stroke-miterlimit="10"
+          stroke-width="2"
+        />
+        <path
+          d="M30,32.9252c0,1.6567-1.3448,3-3,3c-1.6553,0-3-1.3433-3-3c0-1.6553,1.3447-3,3-3C28.6552,29.9252,30,31.27,30,32.9252"
+        />
+        <path
+          d="M48,32.9252c0,1.6567-1.3447,3-3,3s-3-1.3433-3-3c0-1.6553,1.3447-3,3-3S48,31.27,48,32.9252"
+        />
+        <line
+          x1="23"
+          x2="30"
+          y1="24"
+          y2="28"
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+        />
+        <line
+          x1="49"
+          x2="42"
+          y1="24"
+          y2="28"
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+        />
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+          d="M29.5,43c1.2841-0.6376,3.9847-1.0308,6.8421-0.9981c2.6235,0.03,4.9897,0.4146,6.1579,0.9981"
+        />
+      </g>
+    </svg>
+
+    <svg
+      id="emoji"
+      viewBox="0 0 72 72"
+      xmlns="http://www.w3.org/2000/svg"
+      *ngIf="!review[0]"
+    >
+      <g id="color">
+        <path
+          fill="#FCEA2B"
+          d="M36,13c-12.6823,0-23,10.3177-23,23c0,12.6822,10.3177,23,23,23c12.6822,0,23-10.3178,23-23 C59,23.3177,48.6822,13,36,13z"
+        />
+      </g>
+      <g id="hair" />
+      <g id="skin" />
+      <g id="skin-shadow" />
+      <g id="line">
+        <circle
+          cx="36"
+          cy="36"
+          r="23"
+          fill="none"
+          stroke="#000000"
+          stroke-miterlimit="10"
+          stroke-width="2"
+        />
+        <line
+          x1="27"
+          x2="45"
+          y1="43"
+          y2="43"
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          stroke-width="2"
+        />
+        <path
+          d="M30,31c0,1.6568-1.3448,3-3,3c-1.6553,0-3-1.3433-3-3c0-1.6552,1.3447-3,3-3C28.6552,28,30,29.3448,30,31"
+        />
+        <path
+          d="M48,31c0,1.6568-1.3447,3-3,3s-3-1.3433-3-3c0-1.6552,1.3447-3,3-3S48,29.3448,48,31"
+        />
+      </g>
+    </svg>
+
+    <p class="reviews text-black fs-400 ff-serif">{{ review[1] }} Reviews</p>
   </div>
   <div class="product-actions" *ngIf="actionName">
     <button
-      class="wishlist-btn"
+      class="wishlist-btn bg-accent text-black flex jc-center ff-sans-cond fs-500 uppercase"
       type="button"
       (click)="actionClick.emit(productDetails?.slug)"
     >
-      <div class="wishlist-btn-text">{{ actionName | titlecase }}</div>
-      <div class="wishlist-btn-icon" *ngIf="actionIcon">
-        <mat-icon>{{ actionIcon }}</mat-icon>
-      </div>
+      {{ actionName }}
     </button>
   </div>
-</div>
+</div> -->
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{ productDetails.name | titlecase }}</mat-card-title>
+    <mat-card-subtitle>{{
+      productDetails.category | titlecase
+    }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="productDetails.image"
+    [alt]="productDetails.name"
+  />
+  <mat-card-content>
+    <div class="flex">
+      <mat-icon class="text-accent" *ngIf="review[0] / 5 >= 1">star</mat-icon>
+      <mat-icon class="text-accent" *ngIf="review[0] / 4 >= 1">star</mat-icon>
+      <mat-icon class="text-accent" *ngIf="review[0] / 3 >= 1">star</mat-icon>
+      <mat-icon class="text-accent" *ngIf="review[0] / 2 >= 1">star</mat-icon>
+      <mat-icon class="text-accent" *ngIf="review[0] / 1 >= 1">star</mat-icon>
+      <mat-icon class="text-gray" *ngIf="5 - review[0] > 0">star</mat-icon>
+      <mat-icon class="text-gray" *ngIf="4 - review[0] > 0">star</mat-icon>
+      <mat-icon class="text-gray" *ngIf="3 - review[0] > 0">star</mat-icon>
+      <mat-icon class="text-gray" *ngIf="2 - review[0] > 0">star</mat-icon>
+      <mat-icon class="text-gray" *ngIf="1 - review[0] > 0">star</mat-icon>
+      <button mat-button type="button" aria-label="Reviews count">
+        {{ review[1] }} <mat-icon>reviews</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="actionName">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="actionClick.emit(productDetails?.slug)"
+    >
+      {{ actionName }} <mat-icon *ngIf="actionIcon">{{ actionIcon }}</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

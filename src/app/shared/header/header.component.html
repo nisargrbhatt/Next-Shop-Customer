@@ -1,43 +1,115 @@
 <mat-toolbar color="primary">
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Menu icon"
-    (click)="changeSideNavState(true)"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span class="brand-hero"><a routerLink="/">Next Shop</a></span>
-  <div class="spacer"></div>
-  <div class="hero-search">
-    <mat-form-field>
-      <input
-        type="text"
-        matInput
-        [formControl]="search"
-        [matAutocomplete]="auto"
-        #searchInput
-        placeholder="Search Products"
-      />
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option
-          *ngFor="let option of searchLookaheads$ | async"
-          [value]="option.name"
+  <mat-toolbar-row>
+    <div class="part-one">
+      <!-- <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Menu icon"
+        (click)="changeSideNavState(true)"
+      >
+        <mat-icon>menu</mat-icon>
+      </button> -->
+      <span class="brand-hero"><a routerLink="/">Next Shop</a></span>
+    </div>
+    <div
+      class="part-two"
+      *ngIf="
+        currentScreenSize === 'Large' ||
+        currentScreenSize === 'XLarge' ||
+        currentScreenSize === 'Medium'
+      "
+    >
+      <mat-form-field color="accent" floatLabel="false" appearance="fill">
+        <input
+          type="text"
+          matInput
+          [formControl]="search"
+          [matAutocomplete]="auto"
+          #searchInput
+          placeholder="Search..."
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of searchLookaheads$ | async"
+            [value]="option.name"
+          >
+            <img
+              class="example-option-img"
+              aria-hidden
+              [src]="option.images[0].url"
+              height="25"
+            />
+            <span>{{ option.name }}</span> |
+            <small>Category: {{ option.category.name }}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="part-three">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        *ngIf="auth0Service.user$ | async as user"
+      >
+        <img class="avatar" [src]="user?.picture" />
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button
+          mat-menu-item
+          routerLink="cart/show-cart"
+          routerLinkActive="mat-accent"
         >
-          <img
-            class="example-option-img"
-            aria-hidden
-            [src]="option.images[0].url"
-            height="25"
-          />
-          <span>{{ option.name }}</span> |
-          <small>Category: {{ option.category.name }}</small>
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </div>
+          <mat-icon>shopping_cart</mat-icon> <span>Cart</span>
+        </button>
+        <button mat-menu-item routerLink="order" routerLinkActive="mat-accent">
+          <mat-icon> list_alt</mat-icon> <span>Orders</span>
+        </button>
+        <button
+          mat-menu-item
+          routerLink="profile/profile-view"
+          routerLinkActive="mat-accent"
+        >
+          <mat-icon> manage_accounts</mat-icon> <span>Manage Account</span>
+        </button>
+        <button mat-menu-item (click)="auth0Logout()">
+          <mat-icon> logout</mat-icon> <span>Logout</span>
+        </button>
+      </mat-menu>
+      <button mat-button *ngIf="!isAuthenticated" (click)="auth0Login()">
+        <mat-icon>login</mat-icon> <span> Login</span>
+      </button>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row
+    *ngIf="currentScreenSize === 'XSmall' || currentScreenSize === 'Small'"
+  >
+    <input
+      color="primary"
+      type="text"
+      matInput
+      [formControl]="search"
+      [matAutocomplete]="auto"
+      #searchInput
+      placeholder="Search..."
+    />
+    <mat-autocomplete #auto="matAutocomplete" color="primary">
+      <mat-option
+        *ngFor="let option of searchLookaheads$ | async"
+        [value]="option.name"
+      >
+        <img
+          class="example-option-img"
+          aria-hidden
+          [src]="option.images[0].url"
+          height="25"
+        />
+        <span>{{ option.name }}</span> |
+        <small>Category: {{ option.category.name }}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-toolbar-row>
 </mat-toolbar>
-<app-sidenav
+<!-- <app-sidenav
   [sideNavShow]="sideNavShow"
   (changeSideNavState)="changeSideNavState($event)"
-></app-sidenav>
+></app-sidenav> -->

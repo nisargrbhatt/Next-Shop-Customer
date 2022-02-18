@@ -3,7 +3,7 @@ import { Event, NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { ProductService } from './../../product/product.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { GetAllProductLookaheadWithCategoryImageBySearchResponseDataRow } from 'src/app/product/product.interface';
 import {
   debounceTime,
@@ -11,7 +11,11 @@ import {
   filter,
   switchMap,
   map,
+  takeUntil,
 } from 'rxjs/operators';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { AuthService } from '@auth0/auth0-angular';
+import { Auth0Service } from 'src/app/auth/auth0.service';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +24,8 @@ import {
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
+
+  isAuthenticated = false;
 
   sideNavShow = false;
 
@@ -30,9 +36,51 @@ export class HeaderComponent implements OnInit, OnDestroy {
     GetAllProductLookaheadWithCategoryImageBySearchResponseDataRow[]
   >;
 
-  constructor(private productService: ProductService, private router: Router) {}
+  destroyed = new Subject<void>();
+  currentScreenSize: string;
+
+  // Create a map to display breakpoint names for demonstration purposes.
+  displayNameMap = new Map([
+    [Breakpoints.XSmall, 'XSmall'],
+    [Breakpoints.Small, 'Small'],
+    [Breakpoints.Medium, 'Medium'],
+    [Breakpoints.Large, 'Large'],
+    [Breakpoints.XLarge, 'XLarge'],
+  ]);
+
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    breakpointObserver: BreakpointObserver,
+    private authService: Auth0Service,
+    public auth0Service: AuthService,
+  ) {
+    this.subs.sink = breakpointObserver
+      .observe([
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge,
+      ])
+      .pipe(takeUntil(this.destroyed))
+      .subscribe((result) => {
+        for (const query of Object.keys(result.breakpoints)) {
+          if (result.breakpoints[query]) {
+            this.currentScreenSize =
+              this.displayNameMap.get(query) ?? 'Unknown';
+          }
+        }
+      });
+  }
 
   ngOnInit(): void {
+    this.subs.sink = this.authService.AuthStatusListener.subscribe(
+      (authStatus) => {
+        this.isAuthenticated = authStatus;
+      },
+    );
+
     this.searchLookaheads$ = this.search$.pipe(
       debounceTime(100),
       distinctUntilChanged(),
@@ -58,9 +106,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .pipe(filter((event: RouterEvent) => event instanceof NavigationEnd))
       .subscribe((event: RouterEvent) => {
         if (event.url.startsWith('/search/')) {
-          if (event.url.split('/')[2]) {
-            this.search.setValue(decodeURI(event.url.split('/')[2]));
-          }
+          // if (event.url.split('/')[2]) {
+          //   this.search.setValue(decodeURI(event.url.split('/')[2]));
+          // }
         } else {
           this.search.setValue('');
         }
@@ -69,6 +117,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   changeSideNavState(state: boolean): void {
     this.sideNavShow = state;
+  }
+
+  auth0Login(): void {
+    this.auth0Service.loginWithRedirect().subscribe(() => {});
+  }
+
+  auth0Logout(): void {
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {

@@ -25,11 +25,6 @@ import {
   secureAPIURIs,
   basicAPIURIs,
 } from 'src/environments/environment';
-import {
-  CreateSingleProductOrderData,
-  CreateSingleProductOrderResponseData,
-  CreateSingleProductOrderResponse,
-} from '../payment/payment.interface';
 
 const BACKEND_URL = environment.production
   ? environment.backend_url_secure
@@ -43,8 +38,6 @@ const MODEL_BACKEND_URL = environment.backend_model_url;
 export class ProductService {
   constructor(
     private httpService: HttpClient,
-    private snackbarService: MatSnackBar,
-    private router: Router,
     private sharedService: SharedService,
   ) {}
 
@@ -86,8 +79,8 @@ export class ProductService {
       .get<GetAllProductWithCategoryImageBySearchResponse>(
         BACKEND_URL +
           basicAPIURIs.getAllProductWithCategoryImageBySearch +
-          `/?currentPage=${currentPage}&pageSize=${pageSize}&search=${encodeURI(
-            this.sharedService.searchFilter(search),
+          `/?currentPage=${currentPage}&pageSize=${pageSize}&search=${this.sharedService.searchFilter(
+            search,
           )}`,
       )
       .pipe(map((response) => response.data));

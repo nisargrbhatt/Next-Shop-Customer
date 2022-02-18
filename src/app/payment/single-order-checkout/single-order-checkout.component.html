@@ -12,29 +12,29 @@
           [value]="address.id"
           *ngFor="let address of addressesData.rows"
         >
-          <div class="address-show">
-            <div class="address-name" *ngIf="address.name">
+          <address>
+            <p class="subheading-1" *ngIf="address.name">
               Name: {{ address.name }}
-            </div>
-            <div class="address-line1" *ngIf="address.address_line1">
+            </p>
+            <p class="subheading-1" *ngIf="address.address_line1">
               Line1: {{ address.address_line1 }}
-            </div>
-            <div class="address-line2" *ngIf="address.address_line2">
+            </p>
+            <p class="subheading-1" *ngIf="address.address_line2">
               Line2: {{ address.address_line2 }}
-            </div>
-            <div class="address-city" *ngIf="address.city">
+            </p>
+            <p class="subheading-1" *ngIf="address.city">
               City: {{ address.city }}
-            </div>
-            <div class="address-study" *ngIf="address.state">
+            </p>
+            <p class="subheading-1" *ngIf="address.state">
               State: {{ address.state }}
-            </div>
-            <div class="address-zipcode" *ngIf="address.zipcode">
+            </p>
+            <p class="subheading-1" *ngIf="address.zipcode">
               ZipCode: {{ address.zipcode }}
-            </div>
-            <div class="address-contact" *ngIf="address.contact_no">
+            </p>
+            <p class="subheading-1" *ngIf="address.contact_no">
               Contact No: {{ address.contact_no }}
-            </div>
-          </div>
+            </p>
+          </address>
         </mat-radio-button>
       </mat-radio-group>
 

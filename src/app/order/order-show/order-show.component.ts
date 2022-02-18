@@ -60,15 +60,12 @@ export class OrderShowComponent implements OnInit, OnDestroy {
         validators: [Validators.required, Validators.min(1), Validators.max(5)],
       }),
     });
-
-    // this.findReview();
   }
 
   findReview(): void {
     const index = this.orderData.product.reviewes.findIndex((data) => {
       return data.userId === this.userId;
     });
-    console.log(index);
 
     if (index > -1) {
       this.reviewFound = true;

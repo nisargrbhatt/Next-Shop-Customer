@@ -1,4 +1,4 @@
-<div class="hero">
+<div class="hero" *ngIf="cartData">
   <div class="hero-bar">
     <div class="bar-cart-count">Count: {{ cartData?.count || 0 }}</div>
     <div class="bar-actions">
@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <div class="hero-data" *ngIf="cartData">
+  <!-- <div class="hero-data" *ngIf="cartData">
     <div class="cart-items">
       <app-cart-show-edit
         *ngFor="let cartItem of cartData.rows"
@@ -18,5 +18,17 @@
     <div class="cart-items-null" *ngIf="cartData.count === 0">
       Cart is empty.
     </div>
-  </div>
+  </div> -->
+
+  <mat-grid-list
+    [cols]="mybreakpoint"
+    rowHeight="450px"
+    (window:resize)="handleSize($event)"
+  >
+    <mat-grid-tile *ngFor="let cartItem of cartData.rows">
+      <app-cart-show-edit [cartItem]="cartItem"></app-cart-show-edit>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="cart-items-null" *ngIf="cartData.count === 0">Cart is empty.</div>
 </div>
+<app-loader *ngIf="!cartData"></app-loader>

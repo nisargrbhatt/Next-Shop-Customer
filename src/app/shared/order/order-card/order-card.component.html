@@ -1,13 +1,13 @@
-<div class="hero mat-elevation-z8" *ngIf="orderDetails">
+<!-- <div class="hero" *ngIf="orderDetails">
   <div class="hero-image">
     <img
       [src]="orderDetails.product.images[0].url"
       [alt]="orderDetails.product.name"
     />
   </div>
-  <div class="hero-details">
-    <!-- Product Details -->
-    <div class="product-name">
+  <div class="hero-details"> -->
+<!-- Product Details -->
+<!-- <div class="product-name">
       <a [routerLink]="['/', orderDetails.product.slug]">
         {{ orderDetails.product.name }}
       </a>
@@ -18,11 +18,11 @@
     </div>
     <div class="product-small_description">
       {{ orderDetails.product.small_description }}
-    </div>
-    <!--------------------->
-    <mat-divider></mat-divider>
-    <!-- Refund Details -->
-    <div
+    </div> -->
+<!--------------------->
+<!-- <mat-divider></mat-divider> -->
+<!-- Refund Details -->
+<!-- <div
       class="product-refund"
       *ngIf="
         orderDetails.order_status === true &&
@@ -33,9 +33,9 @@
       <p>Refund Id: {{ orderDetails.rp_refund_id }}</p>
       <p>Refund will be processed in 5-7 days</p>
     </div>
-    <mat-divider></mat-divider>
-    <!-- Delivery Details -->
-    <div
+    <mat-divider></mat-divider> -->
+<!-- Delivery Details -->
+<!-- <div
       class="product-delivery"
       *ngIf="
         orderDetails.order_decision === true &&
@@ -48,11 +48,11 @@
       <p *ngIf="orderDetails.delivery_status === true">
         Package is delivered 🎉🎉🎉
       </p>
-    </div>
-    <!--------------------->
-    <mat-divider></mat-divider>
-    <!-- Merchant Details -->
-    <div
+    </div> -->
+<!--------------------->
+<!-- <mat-divider></mat-divider> -->
+<!-- Merchant Details -->
+<!-- <div
       class="product-merchant-status"
       *ngIf="
         orderDetails.order_status === true &&
@@ -78,11 +78,11 @@
       >
         Merchant rejected the order 😢😢😢
       </p>
-    </div>
-    <!--------------------->
-    <mat-divider></mat-divider>
-    <!-- Actions -->
-    <div class="hero-actions">
+    </div> -->
+<!--------------------->
+<!-- <mat-divider></mat-divider> -->
+<!-- Actions -->
+<!-- <div class="hero-actions">
       <div class="hero-action-1">
         <button
           mat-raised-button
@@ -120,8 +120,66 @@
         class="hero-action-3"
         *ngIf="orderDetails.order_cancel === true"
       ></div>
-    </div>
-    <!--------------------->
-  </div>
+    </div> -->
+<!--------------------->
+<!-- </div>
+</div> -->
+<!-- <mat-spinner *ngIf="!orderDetails"></mat-spinner>
 </div>
-<mat-spinner *ngIf="!orderDetails"></mat-spinner>
+</div> -->
+
+<!-- NEW DESIGN  -->
+<mat-card *ngIf="orderDetails" class="example-card">
+  <mat-card-header>
+    <mat-card-title>
+      <a class="title" [routerLink]="['/', orderDetails.product.slug]">
+        {{ orderDetails.product.name }}
+      </a>
+    </mat-card-title>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="orderDetails.product.images[0].url"
+    [alt]="orderDetails.product.name"
+  />
+  <mat-card-content>
+    <p class="subheading-2">x{{ orderDetails.quantity }}</p>
+    <p class="subheading-2">
+      {{ orderDetails.amount / 100 | currency: 'INR' }}
+    </p>
+    <p class="subheading-2">
+      {{ orderDetails.product.small_description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      [routerLink]="['/order/show/', orderDetails.id]"
+    >
+      Show
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      color="primary"
+      *ngIf="orderDetails.order_status === false"
+      [routerLink]="['/buy/pay/', orderDetails.id]"
+    >
+      Complete Order
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      color="warn"
+      *ngIf="
+        orderDetails.order_status === true &&
+        orderDetails.delivery_status === false
+      "
+      (click)="onCancelOrder(orderDetails.id)"
+    >
+      Cancel Order
+    </button>
+  </mat-card-actions>
+</mat-card>

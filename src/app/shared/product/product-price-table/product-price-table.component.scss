@@ -1,15 +1,22 @@
 .table-data {
   border: none;
   width: 100%;
-  border-radius: 1rem;
   margin: 0;
-  padding: 1rem;
+  padding: 0;
 }
 table {
+  padding: 0;
+  margin: 0;
   width: 100%;
 
   td,
   th {
     width: 20%;
   }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }

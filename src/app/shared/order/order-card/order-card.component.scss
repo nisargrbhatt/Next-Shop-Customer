@@ -1,93 +1,101 @@
-.hero {
-  margin: 1rem;
-  display: flex;
-  height: 23rem;
-  width: 60rem;
-}
+// .hero {
+//   margin: 1rem;
+//   display: flex;
+//   height: 23rem;
+//   width: 60rem;
+// }
 
-.hero-image {
-  flex: 30%;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-}
-.hero-details {
-  flex: 70%;
-}
+// .hero-image {
+//   flex: 30%;
+//   img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: contain;
+//   }
+// }
+// .hero-details {
+//   flex: 70%;
+// }
 
-.hero-actions {
-  margin: 0.25rem;
-  padding: 0.25rem;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.product-name {
-  margin: 0.25rem;
-  padding: 0.25rem;
-  font-family: 'Fira Code' monospace;
-  font-size: 1.2rem;
-  font-weight: 500;
+// .hero-actions {
+//   margin: 0.25rem;
+//   padding: 0.25rem;
+//   display: flex;
+//   justify-content: space-evenly;
+//   align-items: center;
+// }
+// .product-name {
+//   margin: 0.25rem;
+//   padding: 0.25rem;
+//   font-family: 'Fira Code' monospace;
+//   font-size: 1.2rem;
+//   font-weight: 500;
+//   a {
+//     color: black;
+//   }
+// }
+// .product-quantity {
+//   margin: 0.25rem;
+//   padding: 0.25rem;
+//   font-family: 'Fira Code' monospace;
+//   font-size: 1rem;
+//   font-weight: 500;
+//   color: gray;
+// }
+// .product-amount {
+//   margin: 0.25rem;
+//   padding: 0.25rem;
+//   font-family: 'Fira Code' monospace;
+//   font-size: 1.1rem;
+//   font-weight: 500;
+//   color: black;
+// }
+// .product-small_description {
+//   margin: 0.25rem;
+//   padding: 0.25rem;
+//   font-family: 'Fira Code' monospace;
+//   font-size: 1rem;
+//   font-weight: 500;
+//   color: gray;
+// }
+// .product-refund {
+//   margin: 0.25rem;
+//   padding: 0.25rem;
+//   font-family: 'Fira Code' monospace;
+//   font-weight: 500;
+//   color: black;
+//   p {
+//     font-size: 0.9rem;
+//   }
+//   h3 {
+//     font-size: 1.2rem;
+//   }
+// }
+// .product-delivery {
+//   margin: 0.25rem;
+//   padding: 0.25rem;
+//   font-family: 'Fira Code' monospace;
+//   font-weight: 500;
+//   color: black;
+//   p {
+//     font-size: 0.9rem;
+//   }
+// }
+// .product-merchant-status {
+//   margin: 0.25rem;
+//   padding: 0.25rem;
+//   font-family: 'Fira Code' monospace;
+//   font-weight: 500;
+//   color: black;
+//   p {
+//     font-size: 0.9rem;
+//   }
+// }
+
+.example-card {
+  max-width: 400px;
+  margin: 0.5rem;
   a {
-    color: black;
-  }
-}
-.product-quantity {
-  margin: 0.25rem;
-  padding: 0.25rem;
-  font-family: 'Fira Code' monospace;
-  font-size: 1rem;
-  font-weight: 500;
-  color: gray;
-}
-.product-amount {
-  margin: 0.25rem;
-  padding: 0.25rem;
-  font-family: 'Fira Code' monospace;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: black;
-}
-.product-small_description {
-  margin: 0.25rem;
-  padding: 0.25rem;
-  font-family: 'Fira Code' monospace;
-  font-size: 1rem;
-  font-weight: 500;
-  color: gray;
-}
-.product-refund {
-  margin: 0.25rem;
-  padding: 0.25rem;
-  font-family: 'Fira Code' monospace;
-  font-weight: 500;
-  color: black;
-  p {
-    font-size: 0.9rem;
-  }
-  h3 {
-    font-size: 1.2rem;
-  }
-}
-.product-delivery {
-  margin: 0.25rem;
-  padding: 0.25rem;
-  font-family: 'Fira Code' monospace;
-  font-weight: 500;
-  color: black;
-  p {
-    font-size: 0.9rem;
-  }
-}
-.product-merchant-status {
-  margin: 0.25rem;
-  padding: 0.25rem;
-  font-family: 'Fira Code' monospace;
-  font-weight: 500;
-  color: black;
-  p {
-    font-size: 0.9rem;
+    text-decoration: none;
   }
 }
