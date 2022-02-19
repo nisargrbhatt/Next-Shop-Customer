@@ -17,7 +17,9 @@ mat-toolbar {
   flex: 60%;
   display: flex;
   justify-content: center;
-  mat-form-field {
+
+  .mat-form-field {
+    padding: 0;
     width: 100%;
   }
 }
