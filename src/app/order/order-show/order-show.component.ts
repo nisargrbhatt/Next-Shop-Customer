@@ -14,6 +14,7 @@ import { OrderService } from '../order.service';
 
 import { AddReviewData, UpdateReviewData } from '../review.interface';
 import { ReviewService } from '../review.service';
+import { PaymentService } from '../../payment/payment.service';
 
 @Component({
   selector: 'app-order-show',
@@ -40,12 +41,13 @@ export class OrderShowComponent implements OnInit, OnDestroy {
     private reviewService: ReviewService,
     private snackbarService: MatSnackBar,
     private router: Router,
+    private paymentService: PaymentService,
   ) {}
 
   ngOnInit(): void {
     this.userId = this.authService.ProfileClaims.userId;
-    if (this.route.snapshot.params.orderId) {
-      this.orderId = this.route.snapshot.params.orderId;
+    if (this.route.snapshot.params['orderId']) {
+      this.orderId = this.route.snapshot.params['orderId'];
     }
     this.subs.sink = this.orderService
       .getOrder(this.orderId)
@@ -60,15 +62,12 @@ export class OrderShowComponent implements OnInit, OnDestroy {
         validators: [Validators.required, Validators.min(1), Validators.max(5)],
       }),
     });
-
-    // this.findReview();
   }
 
   findReview(): void {
     const index = this.orderData.product.reviewes.findIndex((data) => {
       return data.userId === this.userId;
     });
-    console.log(index);
 
     if (index > -1) {
       this.reviewFound = true;
@@ -142,6 +141,14 @@ export class OrderShowComponent implements OnInit, OnDestroy {
         });
         this.router.navigate(['/order']);
       });
+  }
+
+  onCancelOrder(orderId: string): void {
+    this.subs.sink = this.paymentService.cancelOrder(orderId).subscribe((_) => {
+      this.snackbarService.open('Order cancelled', 'Ok', {
+        duration: 2 * 1000,
+      });
+    });
   }
 
   ngOnDestroy(): void {

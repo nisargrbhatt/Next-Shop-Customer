@@ -1,4 +1,4 @@
-<div class="hero" *ngIf="cartItem">
+<!-- <div class="hero" *ngIf="cartItem">
   <div class="hero-image">
     <img [src]="cartItem.product.images[0].url" [alt]="cartItem.product.name" />
   </div>
@@ -52,4 +52,66 @@
       </button>
     </div>
   </div>
-</div>
+</div> -->
+
+<mat-card *ngIf="cartItem" class="example-card">
+  <mat-card-header>
+    <mat-card-title>
+      <a [routerLink]="['/product/show/', cartItem.product.id]">
+        {{ cartItem.product.name }}</a
+      >
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ cartItem.product.category.name }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="cartItem.product.images[0].url"
+    [alt]="cartItem.product.name"
+  />
+  <mat-card-content>
+    <div class="hero-quantity">
+      <mat-form-field>
+        <!-- <button
+          type="button"
+          (click)="quantity.setValue(quantity.value + 1)"
+          [disabled]="quantity.value >= 5"
+          mat-icon-button
+        >
+      </button> -->
+        <mat-icon (click)="quantity.setValue(quantity.value + 1)" matPrefix
+          >add</mat-icon
+        >
+        <input
+          type="number"
+          min="1"
+          max="5"
+          [formControl]="quantity"
+          matInput
+          name="quantity"
+        />
+        <!-- <button
+          type="button"
+          (click)="quantity.setValue(quantity.value - 1)"
+          [disabled]="quantity.value <= 1"
+          mat-icon-button
+        >
+      </button> -->
+        <mat-icon matSuffix (click)="quantity.setValue(quantity.value - 1)"
+          >remove</mat-icon
+        >
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      type="button"
+      (click)="removeTheItem()"
+      mat-raised-button
+      color="warn"
+    >
+      Remove
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { ProductCardSmallDetails } from './../product.interface';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/product/category.interface';
 
 @Component({
@@ -8,12 +8,10 @@ import { Product } from 'src/app/product/category.interface';
   templateUrl: './product-scroll-cards.component.html',
   styleUrls: ['./product-scroll-cards.component.scss'],
 })
-export class ProductScrollCardsComponent implements OnInit {
+export class ProductScrollCardsComponent {
   @Input() productsDetails: Product[];
 
   constructor(private router: Router) {}
-
-  ngOnInit(): void {}
 
   getProductDetails(product: Product): ProductCardSmallDetails {
     return {

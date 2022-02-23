@@ -8,7 +8,6 @@ import { ProductDashboardComponent } from './product-dashboard/product-dashboard
 import { ProductCategoryListComponent } from './product-category-list/product-category-list.component';
 import { ProductShowComponent } from './product-show/product-show.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
-import { NgxViewerModule } from 'ngx-viewer';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { NgxViewerModule } from 'ngx-viewer';
     ProductRoutingModule,
     AngularMaterialModule,
     SharedModule,
-    NgxViewerModule,
   ],
 })
 export class ProductModule {}

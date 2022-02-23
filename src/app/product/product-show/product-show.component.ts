@@ -33,8 +33,8 @@ export class ProductShowComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    if (this.route.snapshot.params.slug) {
-      this.productSlug = this.route.snapshot.params.slug;
+    if (this.route.snapshot.params['slug']) {
+      this.productSlug = this.route.snapshot.params['slug'];
     }
 
     this.subs.sink = this.authService.AuthStatusListener.subscribe(

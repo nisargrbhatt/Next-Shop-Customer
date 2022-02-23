@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SingleOrderCheckoutComponent } from './single-order-checkout.component';
 
@@ -6,11 +6,11 @@ describe('SingleOrderCheckoutComponent', () => {
   let component: SingleOrderCheckoutComponent;
   let fixture: ComponentFixture<SingleOrderCheckoutComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [SingleOrderCheckoutComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SingleOrderCheckoutComponent);

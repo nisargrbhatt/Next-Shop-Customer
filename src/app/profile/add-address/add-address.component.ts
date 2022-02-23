@@ -141,7 +141,7 @@ export class AddAddressComponent implements OnInit, OnDestroy {
     let addAddressResponse: AddAddressResponse;
     try {
       addAddressResponse = await this.profileService.addAddress(addAddressData);
-    } catch (error) {
+    } catch (error: any) {
       if (error.error instanceof ErrorEvent) {
         console.log(error);
       } else {

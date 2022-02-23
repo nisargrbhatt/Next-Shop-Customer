@@ -1,12 +1,12 @@
 <div class="info">
-  <p class="text-info" *ngIf="showPageMessage">
+  <p class="text-info display-1" *ngIf="showPageMessage">
     This page will automatically moved to other page. Do not close this page.
   </p>
-  <p class="text-info" *ngIf="showFailedMessage">
+  <p class="text-info display-1" *ngIf="showFailedMessage">
     You have cancelled the transaction. Would you like to
     <a mat-button (click)="openRazorPayDialog()">try again</a>
   </p>
-  <p class="text-info" *ngIf="showFullyFailedMessage">
+  <p class="text-info display-1" *ngIf="showFullyFailedMessage">
     If payment gateway is not showing. We are very sorry for the inconvenience.
     <a mat-button routerLink="/">Go to</a>
   </p>

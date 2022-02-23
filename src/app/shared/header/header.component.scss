@@ -9,22 +9,61 @@ mat-toolbar {
     color: white;
   }
 }
-.spacer {
-  flex: 1 1 auto;
-}
-.hero-search {
-  margin-top: 1rem;
-  width: 50%;
-  mat-form-field {
-    width: 50%;
-    .example-option-img {
-      vertical-align: middle;
-      margin-right: 8px;
-    }
 
-    [dir='rtl'] .example-option-img {
-      margin-right: 0;
-      margin-left: 8px;
-    }
+.part-one {
+  flex: 20%;
+}
+.part-two {
+  flex: 60%;
+  display: flex;
+  justify-content: center;
+
+  .mat-form-field {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+[dir='rtl'] .example-option-img {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.part-three {
+  flex: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+input {
+  margin-left: auto;
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  .example-option-img {
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  [dir='rtl'] .example-option-img {
+    margin-right: 0;
+    margin-left: 8px;
+  }
+  &::placeholder {
+    animation: type 0.5s alternate infinite;
+  }
+}
+
+@keyframes type {
+  from {
+    box-shadow: inset -3px 0px 0px #888;
+  }
+  to {
+    box-shadow: inset -3px 0px 0px transparent;
   }
 }

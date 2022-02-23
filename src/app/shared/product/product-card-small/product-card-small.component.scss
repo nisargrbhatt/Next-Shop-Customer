@@ -1,182 +1,195 @@
-.hero {
-  padding: 0;
-  margin: 0;
-  display: block;
-  width: 25rem;
-  height: 32rem;
-  border: none;
-  border-radius: 0.8125rem;
+// .hero {
+//   padding: 0;
+//   margin: 0;
+//   display: block;
+//   width: 25rem;
+//   height: 32rem;
+//   border: none;
+//   border-radius: 1rem;
 
-  box-shadow: 1px 1px 8px 1px #00000040;
-}
+//   box-shadow: 1px 1px 8px 1px gray;
+// }
 
-.product-image {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  img {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0.8125rem 0.8125rem 0rem 0rem;
-  }
-}
+// .product-image {
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 60%;
+//   img {
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     border-radius: 1rem 1rem 0rem 0rem;
+//   }
+// }
 
-.product-name {
-  font-family: 'Fira Code';
-  font-weight: 600;
-  font-size: large;
-  color: black;
-  margin: 0.8rem 0 0 0.8rem;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  line-height: 1.38rem;
-}
+// .product-name {
+//   margin: 0.8rem 0 0 0.8rem;
+//   word-wrap: break-word;
+//   overflow-wrap: break-word;
+//   line-height: 1.38rem;
+// }
 
-.product-category {
-  font-family: 'Fira Code';
-  font-weight: 600;
-  font-size: large;
-  color: #6d6d6d;
-  margin: 0.6rem 0 0 0.8rem;
-}
+// .product-category {
+//   color: #6d6d6d;
+//   margin: 0.6rem 0 0 0.8rem;
+// }
 
-.product-ratings {
-  margin: 0.6rem 0 0 0.8rem;
-  display: flex;
+// .product-ratings {
+//   margin: 0.6rem 0 0 0.8rem;
+//   display: flex;
 
-  .ratings {
-    display: flex;
-    margin: 0.5rem 1rem 0.5rem 0;
-  }
-  .reviews {
-    font-family: 'Fira Code';
-    margin: 0.5rem 1rem;
-    font-weight: 600;
-    font-size: medium;
-    color: black;
-    padding-top: 0.3rem;
-  }
-}
+//   .ratings {
+//     display: flex;
+//     margin: 0.5rem 1rem 0.5rem 0;
+//   }
+//   .reviews {
+//     margin: 0.5rem 1rem;
 
-.star-yellow {
-  position: relative;
+//     padding-top: 0.3rem;
+//   }
+// }
 
-  display: inline-block;
-  width: 0;
-  height: 0;
+// // .star-yellow {
+// //   position: relative;
 
-  margin-left: 0.9em;
-  margin-right: 0.9em;
-  margin-bottom: 1.2em;
+// //   display: inline-block;
+// //   width: 0;
+// //   height: 0;
 
-  border-right: 0.3em solid transparent;
-  border-bottom: 0.7em solid #f4f903;
-  border-left: 0.3em solid transparent;
+// //   margin-left: 0.9em;
+// //   margin-right: 0.9em;
+// //   margin-bottom: 1.2em;
 
-  /* Controlls the size of the stars. */
-  font-size: medium;
+// //   border-right: 0.3em solid transparent;
+// //   border-bottom: 0.7em solid #f4f903;
+// //   border-left: 0.3em solid transparent;
 
-  &:before,
-  &:after {
-    content: '';
+// //   /* Controlls the size of the stars. */
+// //   font-size: medium;
 
-    display: block;
-    width: 0;
-    height: 0;
+// //   &:before,
+// //   &:after {
+// //     content: '';
 
-    position: absolute;
-    top: 0.6em;
-    left: -1em;
+// //     display: block;
+// //     width: 0;
+// //     height: 0;
 
-    border-right: 1em solid transparent;
-    border-bottom: 0.7em solid #f4f903;
-    border-left: 1em solid transparent;
+// //     position: absolute;
+// //     top: 0.6em;
+// //     left: -1em;
 
-    transform: rotate(-35deg);
-  }
+// //     border-right: 1em solid transparent;
+// //     border-bottom: 0.7em solid #f4f903;
+// //     border-left: 1em solid transparent;
 
-  &:after {
-    transform: rotate(35deg);
-  }
-}
+// //     transform: rotate(-35deg);
+// //   }
 
-.star-grey {
-  position: relative;
+// //   &:after {
+// //     transform: rotate(35deg);
+// //   }
+// // }
 
-  display: inline-block;
-  width: 0;
-  height: 0;
+// // .star-grey {
+// //   position: relative;
 
-  margin-left: 0.9em;
-  margin-right: 0.9em;
-  margin-bottom: 1.2em;
+// //   display: inline-block;
+// //   width: 0;
+// //   height: 0;
 
-  border-right: 0.3em solid transparent;
-  border-bottom: 0.7em solid #c4c4c4;
-  border-left: 0.3em solid transparent;
+// //   margin-left: 0.9em;
+// //   margin-right: 0.9em;
+// //   margin-bottom: 1.2em;
 
-  /* Controlls the size of the stars. */
-  font-size: medium;
+// //   border-right: 0.3em solid transparent;
+// //   border-bottom: 0.7em solid #c4c4c4;
+// //   border-left: 0.3em solid transparent;
 
-  &:before,
-  &:after {
-    content: '';
+// //   /* Controlls the size of the stars. */
+// //   font-size: medium;
 
-    display: block;
-    width: 0;
-    height: 0;
+// //   &:before,
+// //   &:after {
+// //     content: '';
 
-    position: absolute;
-    top: 0.6em;
-    left: -1em;
+// //     display: block;
+// //     width: 0;
+// //     height: 0;
 
-    border-right: 1em solid transparent;
-    border-bottom: 0.7em solid #c4c4c4;
-    border-left: 1em solid transparent;
+// //     position: absolute;
+// //     top: 0.6em;
+// //     left: -1em;
 
-    transform: rotate(-35deg);
-  }
+// //     border-right: 1em solid transparent;
+// //     border-bottom: 0.7em solid #c4c4c4;
+// //     border-left: 1em solid transparent;
 
-  &:after {
-    transform: rotate(35deg);
-  }
-}
+// //     transform: rotate(-35deg);
+// //   }
 
-.product-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  margin-top: 1rem;
-  .wishlist-btn {
-    height: 3.8rem;
-    width: 12.4rem;
-    display: flex;
-    border: none;
-    border-radius: 2.06rem;
-    background: #8103ff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+// //   &:after {
+// //     transform: rotate(35deg);
+// //   }
+// // }
 
-    .wishlist-btn-text {
-      font-family: Fira Code;
-      font-style: normal;
-      font-weight: 600;
-      font-size: large;
-      color: white;
-      margin-right: 0.5rem;
-      padding-bottom: 0.25rem;
-    }
-    .wishlist-btn-icon {
-      mat-icon {
-        color: white;
-      }
-    }
-  }
+// .product-actions {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   align-content: center;
+//   margin-top: 1rem;
+//   .wishlist-btn {
+//     display: flex;
+//     border: none;
+//     border-radius: 1rem;
+//     width: 50%;
+//     height: 100%;
+//     &:hover {
+//       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//     }
+//     transition: box-shadow 0.25s;
+//   }
+// }
+
+// @media screen and (max-width: 768px) {
+//   .hero {
+//     width: 20rem;
+//     height: 26rem;
+//   }
+//   .product-name {
+//     margin: 0.4rem 0 0 0.4rem;
+//   }
+//   .product-category {
+//     margin: 0.3rem 0 0 0.4rem;
+//   }
+//   .product-ratings {
+//     margin: 0.3rem 0 0 0.4rem;
+//     .ratings {
+//       margin: 0.25rem 0.5rem 0.25rem 0;
+//     }
+//     .reviews {
+//       margin: 0.25rem 0.5rem;
+
+//       padding-top: 0.125rem;
+//     }
+//   }
+//   .star-yellow {
+//     font-size: small;
+//     margin-bottom: 0.6em;
+//   }
+//   .star-grey {
+//     font-size: small;
+//     margin-bottom: 0.6em;
+//   }
+//   .product-actions {
+//     margin-top: 0.5rem;
+//   }
+// }
+
+.example-card {
+  max-width: 400px;
 }

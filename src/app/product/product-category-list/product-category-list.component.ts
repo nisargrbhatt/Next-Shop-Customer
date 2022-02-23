@@ -49,8 +49,8 @@ export class ProductCategoryListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    if (this.route.snapshot.params.id) {
-      this.categoryId = this.route.snapshot.params.id;
+    if (this.route.snapshot.params['id']) {
+      this.categoryId = this.route.snapshot.params['id'];
     }
 
     this.subs.sink = this.search$

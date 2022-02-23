@@ -24,12 +24,18 @@ export class OrderListComponent implements OnInit, OnDestroy {
 
   orderData: GetAllOrdersByUserIdResponseData;
 
+  mybreakpoint: number;
+
   constructor(
     private orderService: OrderService,
     private paymentService: PaymentService,
   ) {}
 
   ngOnInit(): void {
+    this.mybreakpoint = window.innerWidth <= 1000 ? 2 : 4;
+    if (window.innerWidth <= 532) {
+      this.mybreakpoint = 1;
+    }
     this.subs.sink = this.currentPage$
       .pipe(
         debounceTime(200),
@@ -55,6 +61,13 @@ export class OrderListComponent implements OnInit, OnDestroy {
     this.paymentService.cancelOrder(orderId).subscribe((_) => {
       this.onRefresh();
     });
+  }
+
+  handleSize(event: any): void {
+    this.mybreakpoint = event.target.innerWidth <= 1000 ? 2 : 4;
+    if (event.target.innerWidth <= 532) {
+      this.mybreakpoint = 1;
+    }
   }
 
   ngOnDestroy(): void {
