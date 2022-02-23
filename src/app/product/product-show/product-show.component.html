@@ -204,6 +204,21 @@
         <p class="mat-subheading-1">{{ productDetails.description }}</p>
       </mat-expansion-panel>
     </mat-accordion>
+    <!-- SPECIFICATIONS -->
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>SPECIFICATIONS</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p
+          class="mat-subheading-2"
+          *ngFor="let specification of productDetails.specification"
+        >
+          {{ specification.label }}:
+          <span class="mat-subaheding-1">{{ specification.value }}</span>
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
     <!-- REVIEWS  -->
     <mat-accordion *ngIf="productDetails.prices">
       <mat-expansion-panel>
