@@ -10,6 +10,7 @@ import {
 import { FormControl } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { ProductCardSmallDetails } from 'src/app/shared/product/product.interface';
+import { SeoService } from 'src/app/seo.service';
 
 @Component({
   selector: 'app-product-search',
@@ -19,7 +20,7 @@ import { ProductCardSmallDetails } from 'src/app/shared/product/product.interfac
 export class ProductSearchComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
 
-  search = '';
+  search: string | null = '';
 
   searchData: GetAllProductWithCategoryImageByCategoryIdResponseData;
 
@@ -34,6 +35,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private router: Router,
     private route: ActivatedRoute,
+    private seo: SeoService,
   ) {}
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.searchData = data;
         this.totalProducts = data.count;
+        this.seo.setTitle(`Search: ${this.search}`);
       });
   }
 

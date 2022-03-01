@@ -73,7 +73,7 @@ export class ProductService {
   getAllProductWithCategoryImageBySearch(
     currentPage: number,
     pageSize: number,
-    search?: string,
+    search?: string | null,
   ): Observable<GetAllProductWithCategoryImageByCategoryIdResponseData> {
     return this.httpService
       .get<GetAllProductWithCategoryImageBySearchResponse>(

@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
+import { SeoService } from 'src/app/seo.service';
+import { MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-show',
@@ -30,6 +32,7 @@ export class ProductShowComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private route: ActivatedRoute,
     private authService: Auth0Service,
+    private seo: SeoService,
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +53,36 @@ export class ProductShowComponent implements OnInit, OnDestroy {
           ...data,
           specification: JSON.parse(data.specification),
         };
+        const metas: MetaDefinition[] = [
+          {
+            property: 'og:title',
+            content: this.productDetails.name,
+          },
+          {
+            property: 'og:description',
+            content: this.productDetails.small_description,
+          },
+          {
+            property: 'og:image',
+            content:
+              this.productDetails?.images[0]?.url ||
+              'https://firebasestorage.googleapis.com/v0/b/next-shop-59dce.appspot.com/o/Statics%2FBrand-Black.jpg?alt=media&token=44d478db-1362-491b-86e4-749ee5d4ffa1',
+          },
+          {
+            property: 'og:url',
+            content: window.location.href,
+          },
+          {
+            property: 'og:locale',
+            content: 'en_IN',
+          },
+        ];
+
+        metas.forEach((meta) => {
+          this.seo.setMeta(meta);
+        });
+        this.seo.setTitle(this.productDetails.name);
+
         this.findReviewStar();
       });
   }
