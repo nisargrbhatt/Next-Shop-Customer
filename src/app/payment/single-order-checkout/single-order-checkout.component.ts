@@ -14,6 +14,7 @@ import { FullProductData } from 'src/app/product/product.interface';
 import { GetAddressesData } from 'src/app/profile/profile.interface';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CreateSingleProductOrderData } from '../payment.interface';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-single-order-checkout',
@@ -44,20 +45,10 @@ export class SingleOrderCheckoutComponent implements OnInit, OnDestroy {
     private priceService: PriceService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: Auth0Service,
     private profileService: ProfileService,
   ) {}
 
   ngOnInit(): void {
-    this.subs.sink = this.authService.AuthStatusListener.subscribe(
-      (authStatus) => {
-        this.isAuthenticated = authStatus;
-        if (!this.isAuthenticated) {
-          this.authService.login();
-        }
-      },
-    );
-
     this.subs.sink = this.route.paramMap
       .pipe(
         filter(

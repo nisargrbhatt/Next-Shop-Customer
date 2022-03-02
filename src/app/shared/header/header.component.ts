@@ -52,8 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private router: Router,
     breakpointObserver: BreakpointObserver,
-    private authService: Auth0Service,
-    public auth0Service: AuthService,
+    public auth: AuthService,
   ) {
     this.subs.sink = breakpointObserver
       .observe([
@@ -75,11 +74,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subs.sink = this.authService.AuthStatusListener.subscribe(
-      (authStatus) => {
-        this.isAuthenticated = authStatus;
-      },
-    );
+    this.subs.sink = this.auth.isAuthenticated$.subscribe((authStatus) => {
+      this.isAuthenticated = authStatus;
+    });
 
     this.searchLookaheads$ = this.search$.pipe(
       debounceTime(100),
@@ -120,11 +117,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   auth0Login(): void {
-    this.auth0Service.loginWithRedirect().subscribe(() => {});
+    this.auth.loginWithRedirect().subscribe(() => {});
   }
 
   auth0Logout(): void {
-    this.authService.logout();
+    this.auth.logout();
   }
 
   ngOnDestroy(): void {

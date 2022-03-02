@@ -47,7 +47,6 @@ export class AppComponent implements OnInit {
       this.seo.setMeta(meta);
     });
     this.seo.setTitle(this.title);
-    this.authService.autoAuth0();
 
     this.router.events
       .pipe(filter((e: Event) => e instanceof NavigationEnd && e.url === '/'))

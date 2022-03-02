@@ -32,7 +32,7 @@ export class OrderShowComponent implements OnInit, OnDestroy {
   reviewFound = false;
   reviewData: ReviewData;
 
-  private userId: string;
+  private userId: string | undefined;
 
   constructor(
     private orderService: OrderService,
@@ -45,7 +45,7 @@ export class OrderShowComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.userId = this.authService.ProfileClaims.userId;
+    this.userId = this.authService.ProfileClaims?.userId;
     if (this.route.snapshot.params['orderId']) {
       this.orderId = this.route.snapshot.params['orderId'];
     }
@@ -83,7 +83,7 @@ export class OrderShowComponent implements OnInit, OnDestroy {
   getProductCardDetails(product: Product): ProductCardSmallDetails {
     return {
       id: product.id,
-      category: product.category.name,
+      category: product?.category?.name,
       image: product.images[0].url,
       name: product.name,
       slug: product.slug,

@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { Subscription } from 'rxjs';
 import { Auth0Service } from 'src/app/auth/auth0.service';
 import { ErrorComponent } from 'src/app/shared/dialog/error/error.component';
@@ -30,21 +31,17 @@ export class AddressesComponent implements OnInit, OnDestroy {
 
   constructor(
     private profileService: ProfileService,
-    private authService: Auth0Service,
+    private auth: AuthService,
     private router: Router,
-    private snackbarService: MatSnackBar,
     private dialogService: MatDialog,
   ) {}
 
   ngOnInit(): void {
     this.pageLoding = true;
 
-    this.isAuthenticate = this.authService.IsAuth;
-    this.authStatusSub = this.authService.AuthStatusListener.subscribe(
-      (authStatus) => {
-        this.isAuthenticate = authStatus;
-      },
-    );
+    this.authStatusSub = this.auth.isAuthenticated$.subscribe((authStatus) => {
+      this.isAuthenticate = authStatus;
+    });
     this.getAddresses();
   }
 

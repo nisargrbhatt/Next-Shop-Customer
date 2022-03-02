@@ -8,6 +8,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
 import { SeoService } from 'src/app/seo.service';
 import { MetaDefinition } from '@angular/platform-browser';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-product-show',
@@ -31,7 +32,7 @@ export class ProductShowComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute,
-    private authService: Auth0Service,
+    private auth: AuthService,
     private seo: SeoService,
   ) {}
 
@@ -40,11 +41,9 @@ export class ProductShowComponent implements OnInit, OnDestroy {
       this.productSlug = this.route.snapshot.params['slug'];
     }
 
-    this.subs.sink = this.authService.AuthStatusListener.subscribe(
-      (authStatus) => {
-        this.isAuthenticated = authStatus;
-      },
-    );
+    this.subs.sink = this.auth.isAuthenticated$.subscribe((authStatus) => {
+      this.isAuthenticated = authStatus;
+    });
 
     this.subs.sink = this.productService
       .getProductWithCategoryPriceReviewManufacturer(this.productSlug)
@@ -107,7 +106,7 @@ export class ProductShowComponent implements OnInit, OnDestroy {
         quantity: 1,
       });
     } else {
-      this.authService.login();
+      this.auth.loginWithRedirect().subscribe();
     }
   }
 

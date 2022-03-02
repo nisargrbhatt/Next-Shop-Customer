@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { ErrorComponent } from '../../shared/dialog/error/error.component';
 import { ResMesComponent } from '../../shared/dialog/res-mes/res-mes.component';
 import { Subscription } from 'rxjs';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-verify-email',
@@ -42,19 +43,15 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
     private router: Router,
     private snackbarService: MatSnackBar,
     private dialogService: MatDialog,
-    private authService: Auth0Service,
+    private auth: AuthService,
   ) {}
 
   ngOnInit(): void {
     this.pageLoading = true;
 
-    this.isAuthenticate = this.authService.IsAuth;
-
-    this.authStatusSub = this.authService.AuthStatusListener.subscribe(
-      (authStatus) => {
-        this.isAuthenticate = authStatus;
-      },
-    );
+    this.authStatusSub = this.auth.isAuthenticated$.subscribe((authStatus) => {
+      this.isAuthenticate = authStatus;
+    });
 
     this.otpForm = new FormGroup({
       otp: new FormControl(
