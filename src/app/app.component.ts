@@ -56,5 +56,7 @@ export class AppComponent implements OnInit {
         });
         this.seo.setTitle(this.title);
       });
+
+    this.authService.init();
   }
 }

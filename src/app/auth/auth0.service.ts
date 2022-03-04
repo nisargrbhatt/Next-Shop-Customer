@@ -62,4 +62,8 @@ export class Auth0Service {
   get ProfileClaims(): Auth0ProfileData | undefined {
     return this.profileClaims;
   }
+
+  init(): void {
+    console.log('Auth init');
+  }
 }
