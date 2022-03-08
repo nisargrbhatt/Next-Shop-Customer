@@ -65,13 +65,13 @@ export class OrderShowComponent implements OnInit, OnDestroy {
   }
 
   findReview(): void {
-    const index = this.orderData.product.reviewes.findIndex((data) => {
+    const index = this.orderData?.product?.reviewes?.findIndex((data) => {
       return data.userId === this.userId;
     });
 
     if (index > -1) {
       this.reviewFound = true;
-      this.reviewData = this.orderData.product.reviewes[index];
+      this.reviewData = this.orderData?.product?.reviewes[index];
 
       this.reviewForm.setValue({
         message: this.reviewData.message,

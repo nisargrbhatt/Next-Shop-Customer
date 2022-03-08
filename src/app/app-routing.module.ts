@@ -28,6 +28,10 @@ const routes: Routes = [
       import('./order/order.module').then((m) => m.OrderModule),
   },
   {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then((m) => m.ChatModule),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./product/product.module').then((m) => m.ProductModule),
