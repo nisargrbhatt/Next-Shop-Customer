@@ -1,5 +1,5 @@
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
-import { SharedModule } from './../shared/shared.module';
+// import { SharedModule } from './../shared/shared.module';
 import { AngularMaterialModule } from './../angular-material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +22,7 @@ import { AddAddressComponent } from './add-address/add-address.component';
     CommonModule,
     ProfileRoutingModule,
     AngularMaterialModule,
-    SharedModule,
+    // SharedModule,
   ],
 })
 export class ProfileModule {}
