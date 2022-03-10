@@ -80,6 +80,16 @@
     <mat-divider></mat-divider>
     <!-- Actions -->
     <div class="hero-actions">
+      <div class="hero-action-1">
+        <button
+          type="button"
+          mat-icon-button
+          color="primary"
+          [routerLink]="['/chat/', orderData.userId, orderData.merchantId]"
+        >
+          Chat
+        </button>
+      </div>
       <div class="hero-action-2" *ngIf="orderData.order_cancel === false">
         <button
           mat-raised-button

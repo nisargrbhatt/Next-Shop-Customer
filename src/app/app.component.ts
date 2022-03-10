@@ -3,6 +3,7 @@ import { MetaDefinition } from '@angular/platform-browser';
 import { Router, Event, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
 import { Auth0Service } from './auth/auth0.service';
+import { ChatService } from './chat/chat.service';
 import { SeoService } from './seo.service';
 
 @Component({
@@ -40,6 +41,7 @@ export class AppComponent implements OnInit {
     private authService: Auth0Service,
     private seo: SeoService,
     private router: Router,
+    private chatService: ChatService,
   ) {}
 
   ngOnInit(): void {
@@ -58,5 +60,6 @@ export class AppComponent implements OnInit {
       });
 
     this.authService.init();
+    this.chatService.init();
   }
 }

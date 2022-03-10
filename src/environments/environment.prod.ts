@@ -3,6 +3,7 @@ export const environment = {
   backend_url: 'https://next-shop-backend.herokuapp.com',
   backend_url_secure: 'https://next-shop-backend.herokuapp.com',
   backend_model_url: 'https://next-shop-model.herokuapp.com',
+  backend_chat_url: 'https://next-shop-chat.herokuapp.com',
   debug: false,
   auth0ClientId: 'e4hJ28GiU2FLepiHrMcS2drHWOSX9F5P',
   auth0Audience: 'http://localhost:3001',
@@ -49,6 +50,7 @@ export const basicAPIURIs = {
   // User Controller
   emailCheck: '/user/emailCheck',
   oAuthCall: '/user/oAuthCall',
+  getUserBasicData: '/user/getUserBasicData',
   // KYCImage Controller
   getImageByKycId: '/kyc-image/getImageByKycId',
 };
