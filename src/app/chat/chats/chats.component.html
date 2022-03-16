@@ -16,6 +16,13 @@
       </mat-card-actions>
     </mat-card>
   </div>
+  <p
+    *ngIf="rooms?.length === 0"
+    class="mat-subheading-2"
+    style="text-align: center"
+  >
+    No Chats found
+  </p>
 </div>
 <ng-template #norooms>
   <p class="mat-subheading-2" style="text-align: center">No Chats found</p>

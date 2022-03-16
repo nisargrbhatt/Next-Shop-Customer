@@ -13,8 +13,28 @@
   </div>
 
   <div class="hero-data" *ngIf="categoryData">
+    <div class="hero-data-result-null" *ngIf="categoryData.count === 0">
+      No Product Found
+    </div>
     <mat-accordion multi="true">
-      <div class="container-fluid">
+      <mat-grid-list
+        [cols]="mybreakpoint"
+        rowHeight="450px"
+        (window:resize)="handleSize($event)"
+      >
+        <mat-grid-tile *ngFor="let product of categoryData.rows">
+          <app-product-card-small
+            [productDetails]="getProductCardDetails(product)"
+            [cardHeight]="32"
+            [cardWidth]="25"
+            actionName="Open"
+            actionIcon="open_in_full"
+            (actionClick)="onProductClick($event)"
+            [review]="getReviewStar(product)"
+          ></app-product-card-small>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <!-- <div class="container-fluid">
         <div class="row" style="margin-left: 3%; margin-right: 3%">
           <div
             class="col-xs-6 col-md-4"
@@ -31,11 +51,7 @@
             ></app-product-card-small>
           </div>
         </div>
-      </div>
-
-      <div class="hero-data-result-null" *ngIf="categoryData.count === 0">
-        No Product Found
-      </div>
+      </div> -->
     </mat-accordion>
     <mat-paginator
       *ngIf="categoryData.count"

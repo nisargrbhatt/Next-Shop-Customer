@@ -19,6 +19,9 @@
       Cart is empty.
     </div>
   </div> -->
+  <div class="cart-items-null" *ngIf="cartData?.count === 0">
+    Cart is empty.
+  </div>
 
   <mat-grid-list
     [cols]="mybreakpoint"
@@ -29,6 +32,5 @@
       <app-cart-show-edit [cartItem]="cartItem"></app-cart-show-edit>
     </mat-grid-tile>
   </mat-grid-list>
-  <div class="cart-items-null" *ngIf="cartData.count === 0">Cart is empty.</div>
 </div>
 <app-loader *ngIf="!cartData"></app-loader>

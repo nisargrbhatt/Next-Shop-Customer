@@ -17,6 +17,13 @@
   </div>
 </div> -->
 <app-loader *ngIf="!orderData"></app-loader>
+<p
+  class="mat-subheading"
+  style="text-align: center"
+  *ngIf="orderData?.count === 0"
+>
+  No orders found
+</p>
 <mat-accordion multi="true" *ngIf="orderData">
   <mat-grid-list
     [cols]="mybreakpoint"
