@@ -42,6 +42,8 @@ export class ProductCategoryListComponent implements OnInit, OnDestroy {
 
   categoryData: GetAllProductWithCategoryImageByCategoryIdResponseData;
 
+  mybreakpoint: number;
+
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -49,6 +51,10 @@ export class ProductCategoryListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.mybreakpoint = window.innerWidth <= 1000 ? 2 : 4;
+    if (window.innerWidth <= 532) {
+      this.mybreakpoint = 1;
+    }
     if (this.route.snapshot.params['id']) {
       this.categoryId = this.route.snapshot.params['id'];
     }
@@ -98,22 +104,29 @@ export class ProductCategoryListComponent implements OnInit, OnDestroy {
     this.router.navigate(['/', slug]);
   }
 
+  handleSize(event: any): void {
+    this.mybreakpoint = event.target.innerWidth <= 1000 ? 2 : 4;
+    if (event.target.innerWidth <= 532) {
+      this.mybreakpoint = 1;
+    }
+  }
+
   getProductCardDetails(product: ProductData): ProductCardSmallDetails {
     return {
       id: product.id,
-      category: product.category.name,
-      image: product.images[0].url,
+      category: product?.category?.name,
+      image: product?.images[0]?.url,
       name: product.name,
       slug: product.slug,
     };
   }
 
   getReviewStar(product: ProductData): [number, number] {
-    const total = product.reviewes.length;
+    const total = product?.reviewes?.length;
     if (!total) {
       return [0, 0];
     }
-    const sum = product.reviewes.reduce((previous, current) => {
+    const sum = product?.reviewes?.reduce((previous, current) => {
       return previous + current.stars;
     }, 0);
     return [Math.floor(sum / total), total];
