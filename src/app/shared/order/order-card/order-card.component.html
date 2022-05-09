@@ -175,7 +175,8 @@
       color="warn"
       *ngIf="
         orderDetails.order_status === true &&
-        orderDetails.delivery_status === false
+        orderDetails.delivery_status === false &&
+        orderDetails.order_cancel !== true
       "
       (click)="onCancelOrder(orderDetails.id)"
     >

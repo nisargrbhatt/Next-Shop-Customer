@@ -94,8 +94,24 @@
 
 .example-card {
   max-width: 400px;
+  overflow: hidden;
   margin: 0.5rem;
   a {
     text-decoration: none;
+    color: black;
   }
+}
+
+.mat-card-image {
+  max-height: 200px;
+  object-fit: contain;
+}
+
+mat-card-title {
+  text-overflow: clip;
+}
+
+p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
